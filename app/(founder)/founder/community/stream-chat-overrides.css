@@ -1,0 +1,182 @@
+/**
+ * IBF Stream Chat Design System Overrides
+ * Applies the warm cream / purple palette on top of Stream's base v2 CSS.
+ */
+
+.ibf-stream-chat {
+  /* ── Color tokens ── */
+  --str-chat__primary-color: #6B4FD8;
+  --str-chat__primary-surface-color: #EDE8FF;
+  --str-chat__primary-color-low-emphasis: #F5F3FF;
+  --str-chat__background-color: #ffffff;
+  --str-chat__secondary-background-color: #FAFAF7;
+  --str-chat__border-color: #E8E5DE;
+  --str-chat__text-color: #1A1208;
+  --str-chat__secondary-text-color: #9A8E7E;
+  --str-chat__font-family: 'Inter', 'Bricolage Grotesque', system-ui, sans-serif;
+  --str-chat__spacing-px: 1px;
+
+  /* ── Message bubble ── */
+  --str-chat__own-message-bubble-color: #EDE8FF;
+  --str-chat__own-message-text-color: #1A1208;
+  --str-chat__other-message-bubble-color: #F5F3FF;
+  --str-chat__message-bubble-border-radius: 16px;
+
+  /* ── Input bar ── */
+  --str-chat__message-input-border-radius: 14px;
+  --str-chat__message-input-background: #F5F3FF;
+
+  font-family: var(--str-chat__font-family);
+}
+
+/* ── Channel header ── */
+.ibf-stream-chat .str-chat__channel-header {
+  background: #ffffff;
+  border-bottom: 1px solid #E8E5DE;
+  padding: 12px 20px;
+}
+
+.ibf-stream-chat .str-chat__channel-header-title,
+.ibf-stream-chat .str-chat__channel-name {
+  font-family: var(--str-chat__font-family);
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1208;
+}
+
+/* ── Message list ── */
+.ibf-stream-chat .str-chat__list {
+  background: #ffffff;
+  padding: 16px 20px;
+}
+
+/* ── Message input ── */
+.ibf-stream-chat .str-chat__message-input {
+  background: #ffffff;
+  border-top: 1px solid #E8E5DE;
+  padding: 12px 20px;
+}
+
+.ibf-stream-chat .str-chat__message-textarea-container {
+  background: #F5F3FF;
+  border: 1px solid #E8E5DE;
+  border-radius: 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.ibf-stream-chat .str-chat__message-textarea-container:focus-within {
+  border-color: #C4B5FD;
+  box-shadow: 0 0 0 3px #EDE8FF;
+}
+
+.ibf-stream-chat .str-chat__message-textarea {
+  font-family: var(--str-chat__font-family);
+  font-size: 14px;
+  color: #1A1208;
+}
+
+.ibf-stream-chat .str-chat__message-textarea::placeholder {
+  color: #BDB5A8;
+}
+
+/* ── Send button ── */
+.ibf-stream-chat .str-chat__send-button {
+  background: #6B4FD8 !important;
+  border-radius: 10px !important;
+  width: 34px !important;
+  height: 34px !important;
+  transition: background 0.15s, transform 0.1s !important;
+}
+
+.ibf-stream-chat .str-chat__send-button:hover {
+  background: #5B21B6 !important;
+}
+
+.ibf-stream-chat .str-chat__send-button:active {
+  transform: scale(0.95) !important;
+}
+
+.ibf-stream-chat .str-chat__send-button svg {
+  fill: white !important;
+}
+
+/* ── Own message bubbles (purple accent) ── */
+.ibf-stream-chat .str-chat__message--me .str-chat__message-bubble {
+  background: #EDE8FF !important;
+  color: #1A1208 !important;
+  border-radius: 16px 16px 4px 16px !important;
+}
+
+/* ── Other message bubbles ── */
+.ibf-stream-chat .str-chat__message-bubble {
+  border-radius: 16px 16px 16px 4px !important;
+  background: #F5F3FF !important;
+}
+
+/* ── Avatar ── */
+.ibf-stream-chat .str-chat__avatar {
+  border-radius: 50% !important;
+}
+
+/* ── Typing indicator ── */
+.ibf-stream-chat .str-chat__typing-indicator {
+  font-size: 12px;
+  color: #9A8E7E;
+  font-family: var(--str-chat__font-family);
+}
+
+/* ── Emoji picker button ── */
+.ibf-stream-chat .str-chat__emoji-picker-button {
+  color: #9A8E7E !important;
+}
+
+.ibf-stream-chat .str-chat__emoji-picker-button:hover {
+  color: #6B4FD8 !important;
+}
+
+/* ── Reaction button ── */
+.ibf-stream-chat .str-chat__message-reactions-button {
+  color: #9A8E7E !important;
+}
+
+/* ── Thread panel ── */
+.ibf-stream-chat .str-chat__thread {
+  border-left: 1px solid #E8E5DE;
+  background: #FAFAF7;
+}
+
+.ibf-stream-chat .str-chat__thread-header {
+  border-bottom: 1px solid #E8E5DE;
+  font-family: var(--str-chat__font-family);
+}
+
+/* ── Unread badge ── */
+.ibf-stream-chat .str-chat__badge {
+  background: #6B4FD8 !important;
+  font-family: var(--str-chat__font-family);
+}
+
+/* ── Date separator ── */
+.ibf-stream-chat .str-chat__date-separator-date {
+  font-family: var(--str-chat__font-family);
+  font-size: 11px;
+  color: #9A8E7E;
+  background: #FAFAF7;
+  border-radius: 20px;
+  padding: 2px 10px;
+  border: 1px solid #E8E5DE;
+}
+
+.ibf-stream-chat .str-chat__date-separator-line {
+  background: #E8E5DE;
+}
+
+/* ── Link previews ── */
+.ibf-stream-chat .str-chat__message-url-link {
+  color: #6B4FD8 !important;
+}
+
+/* ── Hide the Stream Chat branding ── */
+.ibf-stream-chat .str-chat__powered-by-stream {
+  display: none !important;
+}

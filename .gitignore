@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -39,3 +40,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# error / debug logs
+ts_errors*.log
+tsc_errors*.log
+
+# dev scripts
+fix_routes.sh
+
+# gemini / AI tooling
+.gemini/
+
+# IDE
+.vscode/
+.idea/
