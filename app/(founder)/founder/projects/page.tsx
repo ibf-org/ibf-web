@@ -38,13 +38,13 @@ export default function FounderProjectsPage() {
   }, [])
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#0d1117] text-white">
+    <div className="flex min-h-screen flex-col bg-[#0d1117] text-ibf-heading">
       <main className="flex-1 p-6 md:p-8 lg:p-10 max-w-7xl mx-auto w-full">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="font-syne text-2xl font-bold text-white">My Projects</h1>
+          <h1 className="font-syne text-2xl font-bold text-ibf-heading">My Projects</h1>
           <Link
             href="/founder/projects/new"
-            className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-opacity hover:bg-blue-500"
+            className="flex items-center gap-1.5 rounded-lg bg-ibf-primary px-4 py-2 text-sm font-semibold text-ibf-heading transition-opacity hover:bg-blue-500"
           >
             Post new project <Plus size={16} />
           </Link>
@@ -53,7 +53,7 @@ export default function FounderProjectsPage() {
         {loading ? (
           <div className="grid grid-cols-1 gap-3">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-[120px] animate-pulse rounded-xl bg-[#111827] border border-[#1e2d4a]" />
+              <div key={i} className="h-[120px] animate-pulse rounded-xl bg-ibf-surface border border-[#1e2d4a]" />
             ))}
           </div>
         ) : projects.length === 0 ? (
@@ -62,7 +62,7 @@ export default function FounderProjectsPage() {
             <p className="mt-2 font-dm text-sm text-[#8899bb]">Post your first project and start finding your team.</p>
             <Link
               href="/founder/projects/new"
-              className="mt-5 inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-500"
+              className="mt-5 inline-flex items-center rounded-lg bg-ibf-primary px-5 py-2.5 text-sm font-semibold text-ibf-heading hover:bg-blue-500"
             >
               Post your first project →
             </Link>
@@ -76,9 +76,9 @@ export default function FounderProjectsPage() {
               const teamSize = project.team_members?.length || 0
 
               return (
-                <div key={project.id} className="flex items-center rounded-xl border border-[#1e2d4a] bg-[#111827] p-5 transition-colors hover:border-[#2a3f65]">
+                <div key={project.id} className="flex items-center rounded-xl border border-[#1e2d4a] bg-ibf-surface p-5 transition-colors hover:border-[#2a3f65]">
                   {/* Left: Cover */}
-                  <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-[#1e2d4a]">
+                  <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-ibf-primary-light">
                     {project.cover_image_url ? (
                       <img src={project.cover_image_url} alt={project.title} className="h-full w-full object-cover" />
                     ) : (
@@ -94,18 +94,18 @@ export default function FounderProjectsPage() {
                     <p className="truncate font-dm text-[13px] text-[#8899bb]">{project.tagline}</p>
                     
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                       <span className="rounded-md bg-[#1e2d4a] px-2 py-0.5 text-xs text-[#8899bb]">{project.stage}</span>
-                       <span className="rounded-md bg-[#1e2d4a] px-2 py-0.5 text-xs text-[#8899bb]">{project.category}</span>
+                       <span className="rounded-md bg-ibf-primary-light px-2 py-0.5 text-xs text-[#8899bb]">{project.stage}</span>
+                       <span className="rounded-md bg-ibf-primary-light px-2 py-0.5 text-xs text-[#8899bb]">{project.category}</span>
                        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${
                          project.status === 'open' ? 'bg-emerald-500/10 text-emerald-400' :
                          project.status === 'paused' ? 'bg-amber-500/10 text-amber-400' :
-                         'bg-gray-500/10 text-gray-400'
+                         'bg-gray-500/10 text-ibf-muted'
                        }`}>
                          {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                        </span>
                     </div>
 
-                    <div className="mt-2 flex items-center gap-1.5 font-dm text-xs text-[#4a5a7a]">
+                    <div className="mt-2 flex items-center gap-1.5 font-dm text-xs text-ibf-muted">
                       <span>{openRoles} open roles</span>
                       <span>·</span>
                       <span>{applicationCount} applications</span>
@@ -119,17 +119,17 @@ export default function FounderProjectsPage() {
                     <div className="flex gap-2">
                       <Link
                         href={`/founder/projects/${project.id}/roles`}
-                        className="rounded-md border border-[#1e2d4a] px-3.5 py-1.5 text-xs font-medium text-[#8899bb] hover:bg-[#1e2d4a] hover:text-[#e0e8ff]"
+                        className="rounded-md border border-[#1e2d4a] px-3.5 py-1.5 text-xs font-medium text-[#8899bb] hover:bg-ibf-primary-light hover:text-ibf-primary"
                       >
                         Manage roles
                       </Link>
                       <Link
                         href={`/founder/projects/${project.id}/applications`}
-                        className="rounded-md border border-[#1e2d4a] px-3.5 py-1.5 text-xs font-medium text-[#8899bb] hover:bg-[#1e2d4a] hover:text-[#e0e8ff]"
+                        className="rounded-md border border-[#1e2d4a] px-3.5 py-1.5 text-xs font-medium text-[#8899bb] hover:bg-ibf-primary-light hover:text-ibf-primary"
                       >
                         Applications
                       </Link>
-                      <button title="Edit project" className="flex items-center justify-center rounded-md p-1.5 text-[#4a5a7a] hover:bg-[#1e2d4a] hover:text-[#e0e8ff]">
+                      <button title="Edit project" className="flex items-center justify-center rounded-md p-1.5 text-ibf-muted hover:bg-ibf-primary-light hover:text-ibf-primary">
                         <Edit2 size={16} />
                       </button>
                     </div>

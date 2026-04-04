@@ -21,16 +21,16 @@ import 'stream-chat-react/dist/css/v2/index.css'
 
 function ChatSkeleton() {
   return (
-    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-[#FAFAF7]">
+    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-[var(--ibf-bg)]">
       {/* Sidebar shimmer */}
-      <div className="w-72 flex-shrink-0 border-r border-[#E8E5DE] bg-white p-4 space-y-6 hidden md:block">
+      <div className="w-72 flex-shrink-0 border-r border-[var(--ibf-border)] bg-white p-4 space-y-6 hidden md:block">
         {[0, 1, 2].map((section) => (
           <div key={section}>
-            <div className="h-3 w-24 rounded-full bg-[#E8E5DE] animate-pulse mb-3" />
+            <div className="h-3 w-24 rounded-full bg-[var(--ibf-border)] animate-pulse mb-3" />
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="flex items-center gap-3 py-2">
-                <div className="h-4 w-4 rounded bg-[#E8E5DE] animate-pulse" />
-                <div className="h-3 flex-1 rounded-full bg-[#E8E5DE] animate-pulse" style={{ animationDelay: `${i * 80}ms` }} />
+                <div className="h-4 w-4 rounded bg-[var(--ibf-border)] animate-pulse" />
+                <div className="h-3 flex-1 rounded-full bg-[var(--ibf-border)] animate-pulse" style={{ animationDelay: `${i * 80}ms` }} />
               </div>
             ))}
           </div>
@@ -38,16 +38,16 @@ function ChatSkeleton() {
       </div>
       {/* Message area shimmer */}
       <div className="flex flex-1 flex-col">
-        <div className="h-14 border-b border-[#E8E5DE] bg-white px-5 flex items-center gap-3">
-          <div className="h-4 w-32 rounded-full bg-[#E8E5DE] animate-pulse" />
+        <div className="h-14 border-b border-[var(--ibf-border)] bg-white px-5 flex items-center gap-3">
+          <div className="h-4 w-32 rounded-full bg-[var(--ibf-border)] animate-pulse" />
         </div>
         <div className="flex-1 p-5 space-y-5">
           {[0, 1, 2, 3, 4].map((i) => (
             <div key={i} className={`flex items-start gap-3 ${i % 3 === 2 ? 'flex-row-reverse' : ''}`}>
-              <div className="h-8 w-8 rounded-full bg-[#E8E5DE] animate-pulse flex-shrink-0" />
+              <div className="h-8 w-8 rounded-full bg-[var(--ibf-border)] animate-pulse flex-shrink-0" />
               <div className={`space-y-1.5 max-w-sm`}>
-                <div className="h-3 w-20 rounded-full bg-[#E8E5DE] animate-pulse" />
-                <div className={`h-10 rounded-xl bg-[#E8E5DE] animate-pulse`} style={{ width: `${160 + i * 30}px`, animationDelay: `${i * 100}ms` }} />
+                <div className="h-3 w-20 rounded-full bg-[var(--ibf-border)] animate-pulse" />
+                <div className={`h-10 rounded-xl bg-[var(--ibf-border)] animate-pulse`} style={{ width: `${160 + i * 30}px`, animationDelay: `${i * 100}ms` }} />
               </div>
             </div>
           ))}
@@ -61,18 +61,18 @@ function ChatSkeleton() {
 
 function ChatError({ error }: { error: string }) {
   return (
-    <div className="flex h-[calc(100vh-64px)] items-center justify-center bg-[#FAFAF7]">
+    <div className="flex h-[calc(100vh-64px)] items-center justify-center bg-[var(--ibf-bg)]">
       <div className="flex flex-col items-center gap-4 text-center max-w-sm px-6">
         <div className="h-16 w-16 rounded-2xl bg-red-50 flex items-center justify-center">
           <WifiOff className="text-red-400" size={28} />
         </div>
         <div>
-          <p className="font-sans text-[16px] font-semibold text-[#1A1208]">Chat Unavailable</p>
-          <p className="font-sans text-[13px] text-[#9A8E7E] mt-1.5 leading-relaxed">{error}</p>
+          <p className="font-['Bricolage_Grotesque',sans-serif] text-[16px] font-semibold text-ibf-heading">Chat Unavailable</p>
+          <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted mt-1.5 leading-relaxed">{error}</p>
         </div>
         <button
           onClick={() => window.location.reload()}
-          className="flex items-center gap-2 rounded-xl bg-[#6B4FD8] px-5 py-2.5 font-sans text-[13px] font-semibold text-white hover:bg-[#5B21B6] transition-colors"
+          className="flex items-center gap-2 rounded-xl bg-[var(--ibf-primary)] px-5 py-2.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading hover:bg-[#5B21B6] transition-colors"
         >
           <RefreshCw size={14} />
           Retry connection
@@ -86,20 +86,20 @@ function ChatError({ error }: { error: string }) {
 
 function ChatConnecting() {
   return (
-    <div className="flex h-[calc(100vh-64px)] items-center justify-center bg-[#FAFAF7]">
+    <div className="flex h-[calc(100vh-64px)] items-center justify-center bg-[var(--ibf-bg)]">
       <div className="flex flex-col items-center gap-4">
         <div className="relative">
-          <div className="h-14 w-14 rounded-2xl bg-[#EDE8FF] flex items-center justify-center">
-            <MessageSquare className="text-[#6B4FD8]" size={24} />
+          <div className="h-14 w-14 rounded-2xl bg-[var(--ibf-primary-light)] flex items-center justify-center">
+            <MessageSquare className="text-[var(--ibf-primary)]" size={24} />
           </div>
           <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6B4FD8] opacity-40" />
-            <span className="relative inline-flex h-4 w-4 rounded-full bg-[#6B4FD8]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--ibf-primary)] opacity-40" />
+            <span className="relative inline-flex h-4 w-4 rounded-full bg-[var(--ibf-primary)]" />
           </span>
         </div>
         <div className="text-center">
-          <p className="font-sans text-[14px] font-semibold text-[#1A1208]">Connecting to chat</p>
-          <p className="font-sans text-[12px] text-[#9A8E7E] mt-1">Please wait a moment…</p>
+          <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-semibold text-ibf-heading">Connecting to chat</p>
+          <p className="font-['Bricolage_Grotesque',sans-serif] text-[12px] text-ibf-muted mt-1">Please wait a moment…</p>
         </div>
       </div>
     </div>
@@ -118,21 +118,21 @@ function CustomChannelPreview({ channel, onSelect }: { channel: StreamChannel; o
   return (
     <button
       onClick={onSelect}
-      className="w-full flex items-center gap-2.5 rounded-xl px-3 py-2 text-left transition-all hover:bg-[#F4F1EA] group"
+      className="w-full flex items-center gap-2.5 rounded-xl px-3 py-2 text-left transition-all hover:bg-[var(--ibf-surface)] group"
     >
-      <span className="flex-shrink-0 w-5 flex items-center justify-center text-[#9A8E7E] group-hover:text-[#6B4FD8] transition-colors">
+      <span className="flex-shrink-0 w-5 flex items-center justify-center text-ibf-muted group-hover:text-[var(--ibf-primary)] transition-colors">
         {isProject ? <Lock size={13} /> : <Hash size={14} />}
       </span>
       <div className="flex-1 min-w-0">
-        <p className="text-[13px] font-medium text-[#1A1208] truncate">
+        <p className="text-[13px] font-medium text-ibf-heading truncate">
           {name.replace(/^#/, '')}
         </p>
         {lastMsg?.text && (
-          <p className="text-[11px] text-[#9A8E7E] truncate mt-0.5">{lastMsg.text}</p>
+          <p className="text-[11px] text-ibf-muted truncate mt-0.5">{lastMsg.text}</p>
         )}
       </div>
       {unread > 0 && (
-        <span className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[#6B4FD8] text-white text-[10px] font-bold px-1">
+        <span className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[var(--ibf-primary)] text-ibf-heading text-[10px] font-bold px-1">
           {unread > 99 ? '99+' : unread}
         </span>
       )}
@@ -163,13 +163,13 @@ function CustomDMPreview({
   return (
     <button
       onClick={onSelect}
-      className="w-full flex items-center gap-2.5 rounded-xl px-3 py-2 text-left transition-all hover:bg-[#F4F1EA]"
+      className="w-full flex items-center gap-2.5 rounded-xl px-3 py-2 text-left transition-all hover:bg-[var(--ibf-surface)]"
     >
       <div className="relative flex-shrink-0">
         {image ? (
           <img src={image} alt={name} className="h-7 w-7 rounded-full object-cover" />
         ) : (
-          <div className="h-7 w-7 rounded-full bg-[#6B4FD8] flex items-center justify-center text-white text-[10px] font-bold">
+          <div className="h-7 w-7 rounded-full bg-[var(--ibf-primary)] flex items-center justify-center text-ibf-heading text-[10px] font-bold">
             {initials}
           </div>
         )}
@@ -178,13 +178,13 @@ function CustomDMPreview({
         )}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-[13px] font-medium text-[#1A1208] truncate">{name}</p>
+        <p className="text-[13px] font-medium text-ibf-heading truncate">{name}</p>
         {lastMsg?.text && (
-          <p className="text-[11px] text-[#9A8E7E] truncate mt-0.5">{lastMsg.text}</p>
+          <p className="text-[11px] text-ibf-muted truncate mt-0.5">{lastMsg.text}</p>
         )}
       </div>
       {unread > 0 && (
-        <span className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[#6B4FD8] text-white text-[10px] font-bold px-1">
+        <span className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[var(--ibf-primary)] text-ibf-heading text-[10px] font-bold px-1">
           {unread > 99 ? '99+' : unread}
         </span>
       )}
@@ -197,12 +197,12 @@ function CustomDMPreview({
 function EmptyChatArea() {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-4 text-center px-8">
-      <div className="h-20 w-20 rounded-3xl bg-[#EDE8FF] flex items-center justify-center">
-        <MessageSquare className="text-[#6B4FD8]" size={32} />
+      <div className="h-20 w-20 rounded-3xl bg-[var(--ibf-primary-light)] flex items-center justify-center">
+        <MessageSquare className="text-[var(--ibf-primary)]" size={32} />
       </div>
       <div>
-        <p className="font-sans text-[18px] font-semibold text-[#1A1208]">IBF Chat</p>
-        <p className="font-sans text-[13px] text-[#9A8E7E] mt-1.5 max-w-xs leading-relaxed">
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[18px] font-semibold text-ibf-heading">IBF Chat</p>
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted mt-1.5 max-w-xs leading-relaxed">
           Select a community channel, team chat, or direct message from the sidebar to get started
         </p>
       </div>
@@ -221,7 +221,7 @@ function SidebarSection({
 }) {
   return (
     <div>
-      <p className="px-3 mb-1.5 font-sans text-[10px] font-bold uppercase tracking-widest text-[#9A8E7E]">
+      <p className="px-3 mb-1.5 font-['Bricolage_Grotesque',sans-serif] text-[10px] font-bold uppercase tracking-widest text-ibf-muted">
         {title}
       </p>
       <div className="space-y-0.5">{children}</div>
@@ -263,29 +263,29 @@ export default function ChatPage() {
   const sort = [{ last_message_at: -1 as const }]
 
   return (
-    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-[#FAFAF7]">
+    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-[var(--ibf-bg)]">
       <Chat client={client} theme="str-chat__theme-light">
 
         {/* ── LEFT SIDEBAR ─────────────────────────────────────────────── */}
         <aside
           className={`
-            w-full md:w-72 flex-shrink-0 bg-white border-r border-[#E8E5DE]
+            w-full md:w-72 flex-shrink-0 bg-white border-r border-[var(--ibf-border)]
             flex flex-col overflow-hidden
             ${mobileView === 'channel' ? 'hidden md:flex' : 'flex'}
           `}
         >
           {/* Sidebar header */}
-          <div className="px-5 py-4 border-b border-[#E8E5DE]">
+          <div className="px-5 py-4 border-b border-[var(--ibf-border)]">
             <div className="flex items-center gap-2">
-              <div className="h-7 w-7 rounded-lg bg-[#EDE8FF] flex items-center justify-center">
-                <MessageSquare size={14} className="text-[#6B4FD8]" />
+              <div className="h-7 w-7 rounded-lg bg-[var(--ibf-primary-light)] flex items-center justify-center">
+                <MessageSquare size={14} className="text-[var(--ibf-primary)]" />
               </div>
-              <span className="font-sans text-[14px] font-bold text-[#1A1208]">IBF Chat</span>
+              <span className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-bold text-ibf-heading">IBF Chat</span>
             </div>
           </div>
 
           {/* Scrollable channel sections */}
-          <div className="flex-1 overflow-y-auto py-4 px-2 space-y-5 scrollbar-thin scrollbar-thumb-[#E8E5DE]">
+          <div className="flex-1 overflow-y-auto py-4 px-2 space-y-5 scrollbar-thin scrollbar-thumb-[var(--ibf-border)]">
 
             {/* Community */}
             <SidebarSection title="Community">
@@ -303,7 +303,7 @@ export default function ChatPage() {
                   ) : null
                 }
                 EmptyStateIndicator={() => (
-                  <p className="px-3 text-[12px] text-[#9A8E7E]">No channels</p>
+                  <p className="px-3 text-[12px] text-ibf-muted">No channels</p>
                 )}
               />
             </SidebarSection>
@@ -324,7 +324,7 @@ export default function ChatPage() {
                   ) : null
                 }
                 EmptyStateIndicator={() => (
-                  <p className="px-3 text-[12px] text-[#9A8E7E]">No team chats yet</p>
+                  <p className="px-3 text-[12px] text-ibf-muted">No team chats yet</p>
                 )}
               />
             </SidebarSection>
@@ -346,7 +346,7 @@ export default function ChatPage() {
                   ) : null
                 }
                 EmptyStateIndicator={() => (
-                  <p className="px-3 text-[12px] text-[#9A8E7E]">No direct messages</p>
+                  <p className="px-3 text-[12px] text-ibf-muted">No direct messages</p>
                 )}
               />
             </SidebarSection>
@@ -354,7 +354,7 @@ export default function ChatPage() {
           </div>
 
           {/* Logged in user footer */}
-          <div className="border-t border-[#E8E5DE] p-3">
+          <div className="border-t border-[var(--ibf-border)] p-3">
             <div className="flex items-center gap-2.5 rounded-xl bg-[#F5F3FF] px-3 py-2">
               {client.user?.image ? (
                 <img
@@ -363,15 +363,15 @@ export default function ChatPage() {
                   className="h-7 w-7 rounded-full object-cover flex-shrink-0"
                 />
               ) : (
-                <div className="h-7 w-7 rounded-full bg-[#6B4FD8] flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">
+                <div className="h-7 w-7 rounded-full bg-[var(--ibf-primary)] flex items-center justify-center text-ibf-heading text-[11px] font-bold flex-shrink-0">
                   {((client.user?.name as string) || 'U').slice(0, 2).toUpperCase()}
                 </div>
               )}
               <div className="min-w-0 flex-1">
-                <p className="truncate font-sans text-[12px] font-semibold text-[#5B21B6]">
+                <p className="truncate font-['Bricolage_Grotesque',sans-serif] text-[12px] font-semibold text-[#5B21B6]">
                   {(client.user?.name as string) || 'You'}
                 </p>
-                <p className="font-sans text-[10px] text-[#7C3AED]">Online</p>
+                <p className="font-['Bricolage_Grotesque',sans-serif] text-[10px] text-[#7C3AED]">Online</p>
               </div>
               <span className="h-2 w-2 rounded-full bg-emerald-400 flex-shrink-0" />
             </div>
@@ -389,10 +389,10 @@ export default function ChatPage() {
             <Channel channel={activeChannel} key={activeChannel.id}>
               <Window>
                 {/* Mobile back button */}
-                <div className="flex items-center md:hidden px-4 py-2 border-b border-[#E8E5DE] bg-white">
+                <div className="flex items-center md:hidden px-4 py-2 border-b border-[var(--ibf-border)] bg-white">
                   <button
                     onClick={() => setMobileView('list')}
-                    className="flex items-center gap-1.5 text-[#6B4FD8] font-sans text-[13px] font-semibold"
+                    className="flex items-center gap-1.5 text-[var(--ibf-primary)] font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold"
                     aria-label="Back to channel list"
                   >
                     <ArrowLeft size={16} />

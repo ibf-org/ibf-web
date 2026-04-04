@@ -70,18 +70,18 @@ export default async function PublicProfilePage({ params }: { params: { username
   // Visual formatting flags
   const isFounder = user.role === 'founder'
   const initials = user.full_name ? user.full_name.charAt(0) : 'U'
-  const badgeColor = isFounder ? 'bg-blue-600/20 text-[#4B9CF5] border-[#4B9CF5]/30' : 'bg-teal-600/20 text-[#1D9E75] border-[#1D9E75]/30'
+  const badgeColor = isFounder ? 'bg-ibf-primary/20 text-[#4B9CF5] border-[#4B9CF5]/30' : 'bg-teal-600/20 text-ibf-secondary border-[#1D9E75]/30'
   const circleColor = isFounder ? 'bg-[#4B9CF5]' : 'bg-[#1D9E75]'
 
   return (
-    <div className="min-h-screen bg-[#0C0F14] text-white">
+    <div className="min-h-screen bg-[#0C0F14] text-ibf-heading">
       <main className="mx-auto max-w-[800px] p-6 pb-20 pt-8 sm:p-8">
         
         {/* HEADER CARD */}
-        <div className="mb-6 rounded-2xl border border-[#1e2d4a] bg-[#111827] p-6 shadow-sm sm:p-8">
+        <div className="mb-6 rounded-2xl border border-[#1e2d4a] bg-ibf-surface p-6 shadow-sm sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-start gap-5">
             
-            <div className={`flex h-[72px] w-[72px] flex-shrink-0 items-center justify-center overflow-hidden rounded-full font-syne text-2xl font-bold text-white shadow-inner ${user.avatar_url ? 'bg-[#1e2d4a]' : circleColor}`}>
+            <div className={`flex h-[72px] w-[72px] flex-shrink-0 items-center justify-center overflow-hidden rounded-full font-syne text-2xl font-bold text-ibf-heading shadow-inner ${user.avatar_url ? 'bg-ibf-primary-light' : circleColor}`}>
               {user.avatar_url ? (
                 <img src={user.avatar_url} alt={user.full_name} className="h-full w-full object-cover" />
               ) : (
@@ -123,17 +123,17 @@ export default async function PublicProfilePage({ params }: { params: { username
               {/* Portfolio Links Row */}
               <div className="mt-4 flex items-center gap-4">
                 {profile?.github_url && (
-                  <a href={profile.github_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#4a5a7a] transition-colors hover:text-[#4B9CF5]" aria-label={`${user.full_name}'s GitHub`}>
+                  <a href={profile.github_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-ibf-muted transition-colors hover:text-[#4B9CF5]" aria-label={`${user.full_name}'s GitHub`}>
                     <Link2 size={16} /> GitHub
                   </a>
                 )}
                 {profile?.linkedin_url && (
-                  <a href={profile.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#4a5a7a] transition-colors hover:text-[#4B9CF5]" aria-label={`${user.full_name}'s LinkedIn`}>
+                  <a href={profile.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-ibf-muted transition-colors hover:text-[#4B9CF5]" aria-label={`${user.full_name}'s LinkedIn`}>
                     <Link2 size={16} /> LinkedIn
                   </a>
                 )}
                 {profile?.website_url && (
-                  <a href={profile.website_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#4a5a7a] transition-colors hover:text-[#4B9CF5]" aria-label={`${user.full_name}'s Website`}>
+                  <a href={profile.website_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-ibf-muted transition-colors hover:text-[#4B9CF5]" aria-label={`${user.full_name}'s Website`}>
                     <Globe size={16} /> Website
                   </a>
                 )}
@@ -146,10 +146,10 @@ export default async function PublicProfilePage({ params }: { params: { username
         {/* SKILLS SECTION */}
         {!isFounder && profile?.skills && profile.skills.length > 0 && (
           <div className="mb-6">
-            <h3 className="mb-2 font-dm text-[11px] font-semibold uppercase tracking-wider text-[#4a5a7a]">Skills</h3>
+            <h3 className="mb-2 font-dm text-[11px] font-semibold uppercase tracking-wider text-ibf-muted">Skills</h3>
             <div className="flex flex-wrap gap-2">
               {profile.skills.map((skill: string) => (
-                <span key={skill} className="rounded-full bg-[#1D9E75]/10 px-3 py-1 font-dm text-xs font-semibold text-[#1D9E75] border border-[#1D9E75]/20">
+                <span key={skill} className="rounded-full bg-[#1D9E75]/10 px-3 py-1 font-dm text-xs font-semibold text-ibf-secondary border border-[#1D9E75]/20">
                   {skill}
                 </span>
               ))}
@@ -160,7 +160,7 @@ export default async function PublicProfilePage({ params }: { params: { username
         {/* PROJECTS SECTION */}
         {featuredProjects.length > 0 && (
           <div>
-            <h3 className="mb-3 font-dm text-[11px] font-semibold uppercase tracking-wider text-[#4a5a7a]">Projects</h3>
+            <h3 className="mb-3 font-dm text-[11px] font-semibold uppercase tracking-wider text-ibf-muted">Projects</h3>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {featuredProjects.map(project => (
                 <Link 
@@ -170,7 +170,7 @@ export default async function PublicProfilePage({ params }: { params: { username
                 >
                   <div className="mb-1 flex items-center justify-between">
                     <span className="font-syne text-[14px] font-bold text-[#e0e8ff]">{project.title}</span>
-                    <span className="rounded bg-black/50 px-1.5 py-0.5 font-dm text-[9px] font-bold uppercase tracking-wider text-gray-300">
+                    <span className="rounded bg-ibf-bg/50 px-1.5 py-0.5 font-dm text-[9px] font-bold uppercase tracking-wider text-gray-300">
                       {project.category}
                     </span>
                   </div>

@@ -145,21 +145,21 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
   }
 
   return (
-    <div className="flex h-[calc(100vh-80px)] -m-8 overflow-hidden rounded-xl border border-[#1e1e3a] bg-[#0d0d1a]">
+    <div className="flex h-[calc(100vh-80px)] -m-8 overflow-hidden rounded-xl border border-ibf-border bg-[#0d0d1a]">
       {/* 40% LEFT PANEL: List */}
-      <div className="flex h-full w-[40%] flex-col border-r border-[#1e1e3a] bg-[#0C0F14]">
+      <div className="flex h-full w-[40%] flex-col border-r border-ibf-border bg-[#0C0F14]">
         {/* Header */}
         <div className="shrink-0 p-5 pb-0">
-          <Link href={`/founder/projects/${projectId}`} className="mb-4 flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300">
+          <Link href={`/founder/projects/${projectId}`} className="mb-4 flex items-center gap-2 text-sm text-ibf-hint hover:text-gray-300">
             <ArrowLeft size={16} /> Back to project
           </Link>
           <h1 className="m-0 mb-1 font-display text-xl font-bold text-[#f0f0ff]">{projectTitle}</h1>
-          <p className="m-0 text-xs text-gray-400">
+          <p className="m-0 text-xs text-ibf-muted">
             {applications.length} total application{applications.length !== 1 ? 's' : ''} | <span className="text-amber-500">{pendingCount} pending</span>
           </p>
 
           {/* Filters */}
-          <div className="mt-5 flex gap-2 overflow-x-auto border-b border-[#1e1e3a] pb-px">
+          <div className="mt-5 flex gap-2 overflow-x-auto border-b border-ibf-border pb-px">
             {['all', 'pending', 'reviewing', 'accepted', 'rejected'].map(f => (
               <button
                 key={f}
@@ -167,7 +167,7 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                 className={`whitespace-nowrap border-b-2 px-3 py-2 text-xs font-medium capitalize transition-colors ${
                   filter === f 
                     ? 'border-violet-500 text-violet-400' 
-                    : 'border-transparent text-gray-500 hover:text-gray-300'
+                    : 'border-transparent text-ibf-hint hover:text-gray-300'
                 }`}
               >
                 {f}
@@ -198,12 +198,12 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                     className={`cursor-pointer rounded-xl border p-4 transition-all duration-150 ${
                       isSelected 
                         ? 'border-violet-500 bg-violet-500/5 shadow-[0_0_15px_rgba(124,58,237,0.1)]' 
-                        : 'border-[#1e1e3a] bg-[#111827] hover:border-[#2a2a4a]'
+                        : 'border-ibf-border bg-ibf-surface hover:border-[#2a2a4a]'
                     }`}
                   >
                     <div className="mb-3 flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 font-bold text-white">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 font-bold text-ibf-heading">
                           {student?.avatar_url ? (
                             <Image src={student.avatar_url} alt={student.full_name} width={40} height={40} className="object-cover" />
                           ) : (
@@ -213,24 +213,24 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                         <div>
                           <p className="m-0 text-sm font-semibold text-[#f0f0ff]">{student?.full_name}</p>
                           {profile?.university && (
-                            <p className="m-0 truncate text-[11px] text-gray-500">{profile.university}</p>
+                            <p className="m-0 truncate text-[11px] text-ibf-hint">{profile.university}</p>
                           )}
                         </div>
                       </div>
                       <div className="flex flex-col items-end gap-1">
-                        <span className="text-[10px] uppercase text-gray-500">{timeAgo(app.created_at)}</span>
+                        <span className="text-[10px] uppercase text-ibf-hint">{timeAgo(app.created_at)}</span>
                         <StatusBadge status={app.status} />
                       </div>
                     </div>
                     
                     {/* Role & Match */}
                     <div className="flex items-center justify-between text-[11px]">
-                      <span className="truncate text-gray-400">For: {app.roles?.title}</span>
+                      <span className="truncate text-ibf-muted">For: {app.roles?.title}</span>
                       
                       {skillsMatch && (
                         <div className="flex items-center gap-2">
-                          <span className="text-gray-500">{skillsMatch.matched}/{skillsMatch.total} skills</span>
-                          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-[#1e1e3a]">
+                          <span className="text-ibf-hint">{skillsMatch.matched}/{skillsMatch.total} skills</span>
+                          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-ibf-surface">
                             <div 
                               className="h-full rounded-full bg-cyan-500 transition-all" 
                               style={{ width: `${skillsMatch.percentage}%` }} 
@@ -250,8 +250,8 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
       {/* 60% RIGHT PANEL: Detail View */}
       <div className="flex h-full w-[60%] flex-col bg-[#0d0d1a]">
         {!selectedApp || !selectedApp.users ? (
-          <div className="flex h-full flex-col items-center justify-center p-8 text-center text-gray-500">
-            <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#111827]">
+          <div className="flex h-full flex-col items-center justify-center p-8 text-center text-ibf-hint">
+            <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-ibf-surface">
               <ArrowLeft size={24} className="text-[#1e1e3a]" />
             </div>
             <p>Select an application to view details</p>
@@ -266,7 +266,7 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
               <div className="flex-1 overflow-y-auto p-8">
                 {/* Header Profile Info */}
                 <div className="mb-8 flex items-start gap-5">
-                  <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 text-2xl font-bold text-white shadow-lg">
+                  <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 text-2xl font-bold text-ibf-heading shadow-lg">
                     {student.avatar_url ? (
                       <Image src={student.avatar_url} alt={student.full_name} width={80} height={80} className="object-cover" />
                     ) : student.full_name.charAt(0).toUpperCase()}
@@ -275,14 +275,14 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                     <h2 className="m-0 mb-1.5 font-display text-2xl font-bold text-[#f0f0ff]">{student.full_name}</h2>
                     
                     {profile?.university && (
-                      <p className="m-0 mb-3 text-sm text-gray-400">
+                      <p className="m-0 mb-3 text-sm text-ibf-muted">
                         {profile.university} {profile.grad_year && `· Class of ${profile.grad_year}`}
                       </p>
                     )}
                     
                     <div className="flex items-center gap-3">
                       {profile?.availability_status && (
-                        <span className="rounded-md border border-[#1e1e3a] bg-[#111827] px-2.5 py-1 text-xs font-medium text-gray-300">
+                        <span className="rounded-md border border-ibf-border bg-ibf-surface px-2.5 py-1 text-xs font-medium text-gray-300">
                           Availability: {profile.availability_status}
                         </span>
                       )}
@@ -307,7 +307,7 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                 {/* Skills Assessment */}
                 {profile?.skills && profile.skills.length > 0 && (
                   <div className="mb-8">
-                    <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">Skills Assessment</h4>
+                    <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ibf-hint">Skills Assessment</h4>
                     <div className="flex flex-wrap gap-2">
                       {profile.skills.map((s: string) => {
                         const isRequired = selectedApp.roles?.skills_required?.includes(s)
@@ -317,7 +317,7 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                             className={`rounded-full px-3 py-1.5 text-xs font-medium ${
                               isRequired 
                                 ? 'bg-cyan-500/20 text-cyan-400 ring-1 ring-cyan-500/50' 
-                                : 'bg-[#111827] text-gray-400 ring-1 ring-[#1e1e3a]'
+                                : 'bg-ibf-surface text-ibf-muted ring-1 ring-[#1e1e3a]'
                             }`}
                           >
                             {s}
@@ -332,27 +332,27 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                 <div className="mb-8 grid grid-cols-2 gap-8">
                   {profile?.bio && (
                     <div className="col-span-2 md:col-span-1">
-                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-gray-500">Bio</h4>
+                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-ibf-hint">Bio</h4>
                       <p className="m-0 text-sm leading-relaxed text-gray-300">{profile.bio}</p>
                     </div>
                   )}
 
                   <div className="col-span-2 md:col-span-1">
-                    <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">Portfolio Links</h4>
+                    <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ibf-hint">Portfolio Links</h4>
                     <div className="flex flex-col gap-2">
                       {profile?.github_url && (
                         <a href={profile.github_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#f0f0ff]">
-                          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#111827]"><ExternalLink size={14} /></div> GitHub
+                          <div className="flex h-7 w-7 items-center justify-center rounded bg-ibf-surface"><ExternalLink size={14} /></div> GitHub
                         </a>
                       )}
                       {profile?.linkedin_url && (
                         <a href={profile.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#f0f0ff]">
-                          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#111827]"><ExternalLink size={14} /></div> LinkedIn
+                          <div className="flex h-7 w-7 items-center justify-center rounded bg-ibf-surface"><ExternalLink size={14} /></div> LinkedIn
                         </a>
                       )}
                       {profile?.website_url && (
                         <a href={profile.website_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#f0f0ff]">
-                          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#111827]"><Globe size={14} /></div> Personal Site
+                          <div className="flex h-7 w-7 items-center justify-center rounded bg-ibf-surface"><Globe size={14} /></div> Personal Site
                         </a>
                       )}
                       {!(profile?.github_url || profile?.linkedin_url || profile?.website_url) && (
@@ -364,8 +364,8 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
               </div>
 
               {/* Action Bar footer fixed to bottom */}
-              <div className="shrink-0 border-t border-[#1e1e3a] bg-[#0C0F14] p-5">
-                <div className="mb-4 flex items-center justify-between text-xs text-gray-500">
+              <div className="shrink-0 border-t border-ibf-border bg-[#0C0F14] p-5">
+                <div className="mb-4 flex items-center justify-between text-xs text-ibf-hint">
                   <span>Applied {formatDate(selectedApp.created_at)}</span>
                   <div className="flex items-center gap-2">
                     Current Status: <StatusBadge status={selectedApp.status} />
@@ -384,7 +384,7 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                         Cancel
                       </button>
                       <button 
-                        className="flex-1 rounded-lg bg-red-500 py-2 text-sm font-bold text-white hover:bg-red-600 transition disabled:opacity-50 flex justify-center items-center" 
+                        className="flex-1 rounded-lg bg-red-500 py-2 text-sm font-bold text-ibf-heading hover:bg-red-600 transition disabled:opacity-50 flex justify-center items-center" 
                         onClick={() => rejectApplication(selectedApp.id)}
                         disabled={anyLoading(selectedApp.id)}
                       >
@@ -419,7 +419,7 @@ export default function ApplicationsClient({ projectId, projectTitle, applicatio
                     <button
                       onClick={() => acceptApplication(selectedApp.id)}
                       disabled={anyLoading(selectedApp.id) || selectedApp.status === 'accepted'}
-                      className={`flex-[1.5] justify-center flex items-center rounded-lg py-3 text-sm font-bold text-white transition ${
+                      className={`flex-[1.5] justify-center flex items-center rounded-lg py-3 text-sm font-bold text-ibf-heading transition ${
                         selectedApp.status === 'accepted' ? 'bg-emerald-600/50' : 'bg-emerald-500 hover:bg-emerald-600'
                       } disabled:opacity-40`}
                     >

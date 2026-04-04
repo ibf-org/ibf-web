@@ -122,7 +122,7 @@ export default function ProjectRolesPage() {
   const formValid = title.trim() && skills.length > 0 && commitment && compensation
 
   if (loading) {
-    return <div className="flex min-h-screen items-center justify-center bg-[#0C0F14]"><Loader2 className="animate-spin text-blue-500" size={32} /></div>
+    return <div className="flex min-h-screen items-center justify-center bg-[#0C0F14]"><Loader2 className="animate-spin text-ibf-primary" size={32} /></div>
   }
 
   return (
@@ -131,10 +131,10 @@ export default function ProjectRolesPage() {
         
         {/* Header Card */}
         {project && (
-          <div className="rounded-xl border border-[#1e2d4a] bg-[#111827] p-6">
+          <div className="rounded-xl border border-[#1e2d4a] bg-ibf-surface p-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="font-syne text-xl font-bold text-white">{project.title}</h1>
+                <h1 className="font-syne text-xl font-bold text-ibf-heading">{project.title}</h1>
                 <p className="mt-1 font-dm text-sm text-[#8899bb]">{project.tagline}</p>
               </div>
               {project.status === 'open' && (
@@ -146,7 +146,7 @@ export default function ProjectRolesPage() {
           </div>
         )}
 
-        <div className="rounded-xl border border-blue-500/20 bg-blue-500/10 p-4 text-center">
+        <div className="rounded-xl border border-ibf-primary/20 bg-blue-500/10 p-4 text-center">
           <p className="font-dm text-sm font-medium text-blue-300">
             Add the roles you are looking for. You can add up to 5 roles. ({roles.length}/5)
           </p>
@@ -160,18 +160,18 @@ export default function ProjectRolesPage() {
                 <button 
                   title="Delete Role"
                   onClick={() => handleDeleteRole(role.id)}
-                  className="absolute right-4 top-4 text-[#4a5a7a] hover:text-red-400 transition-colors"
+                  className="absolute right-4 top-4 text-ibf-muted hover:text-red-400 transition-colors"
                 >
                   <Trash2 size={16} />
                 </button>
                 <div className="flex items-center gap-3">
                   <h3 className="font-syne text-lg font-bold text-[#e0e8ff]">{role.title}</h3>
-                  <span className="rounded bg-[#1e2d4a] px-2 py-0.5 text-xs text-[#8899bb]">{role.commitment_type}</span>
+                  <span className="rounded bg-ibf-primary-light px-2 py-0.5 text-xs text-[#8899bb]">{role.commitment_type}</span>
                   <span className="rounded bg-indigo-500/10 px-2 py-0.5 text-xs text-indigo-300">{role.compensation_type}</span>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {role.skills_required?.map((s: string) => (
-                    <span key={s} className="rounded-md bg-[#111827] border border-[#1e2d4a] px-2 py-0.5 text-[11px] text-[#4a5a7a]">
+                    <span key={s} className="rounded-md bg-ibf-surface border border-[#1e2d4a] px-2 py-0.5 text-[11px] text-ibf-muted">
                       {s}
                     </span>
                   ))}
@@ -183,8 +183,8 @@ export default function ProjectRolesPage() {
 
         {/* Add Role Form */}
         {roles.length < 5 ? (
-          <div className="rounded-xl border border-[#1e2d4a] bg-[#111827] p-6 shadow-xl">
-            <h2 className="mb-5 font-syne text-lg font-semibold text-white">Add new role</h2>
+          <div className="rounded-xl border border-[#1e2d4a] bg-ibf-surface p-6 shadow-xl">
+            <h2 className="mb-5 font-syne text-lg font-semibold text-ibf-heading">Add new role</h2>
             
             <div className="space-y-5">
               <div>
@@ -193,7 +193,7 @@ export default function ProjectRolesPage() {
                   value={title}
                   onChange={e => setTitle(e.target.value)}
                   placeholder="e.g. Frontend Developer"
-                  className="w-full rounded-lg border border-[#1e2d4a] bg-[#0C0F14] px-4 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-lg border border-[#1e2d4a] bg-[#0C0F14] px-4 py-2 text-sm text-ibf-heading focus:border-ibf-primary focus:outline-none"
                 />
               </div>
 
@@ -203,21 +203,21 @@ export default function ProjectRolesPage() {
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                   placeholder="What will this person do?"
-                  className="min-h-[80px] w-full rounded-lg border border-[#1e2d4a] bg-[#0C0F14] px-4 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                  className="min-h-[80px] w-full rounded-lg border border-[#1e2d4a] bg-[#0C0F14] px-4 py-2 text-sm text-ibf-heading focus:border-ibf-primary focus:outline-none"
                 />
               </div>
 
               <div>
                 <label className="mb-1.5 flex justify-between font-dm text-sm font-medium text-[#e0e8ff]">
                   <span>Skills Required</span>
-                  <span className="text-xs text-[#4a5a7a]">{skills.length}/8</span>
+                  <span className="text-xs text-ibf-muted">{skills.length}/8</span>
                 </label>
                 
                 <div className="mb-2 flex flex-wrap gap-2">
                   {skills.map(s => (
                     <div key={s} className="flex items-center gap-1 rounded bg-blue-500/20 px-2 py-1 text-xs text-blue-300">
                       {s}
-                      <button title="Remove skill" onClick={() => handleRemoveSkill(s)} className="hover:text-white"><X size={12} /></button>
+                      <button title="Remove skill" onClick={() => handleRemoveSkill(s)} className="hover:text-ibf-heading"><X size={12} /></button>
                     </div>
                   ))}
                 </div>
@@ -233,14 +233,14 @@ export default function ProjectRolesPage() {
                       }
                     }}
                     placeholder="Type skill & press Enter"
-                    className="flex-1 rounded-lg border border-[#1e2d4a] bg-[#0C0F14] px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                    className="flex-1 rounded-lg border border-[#1e2d4a] bg-[#0C0F14] px-3 py-2 text-sm text-ibf-heading focus:border-ibf-primary focus:outline-none"
                     disabled={skills.length >= 8}
                   />
                   <button 
                     title="Add skill"
                     onClick={() => handleAddSkill(skillInput)}
                     disabled={skills.length >= 8 || !skillInput.trim()}
-                    className="flex items-center justify-center rounded-lg bg-[#1e2d4a] px-3 text-white disabled:opacity-50"
+                    className="flex items-center justify-center rounded-lg bg-ibf-primary-light px-3 text-ibf-heading disabled:opacity-50"
                   >
                     <Plus size={16} />
                   </button>
@@ -251,7 +251,7 @@ export default function ProjectRolesPage() {
                     <button
                       key={qs}
                       onClick={() => handleAddSkill(qs)}
-                      className="rounded border border-[#1e2d4a] bg-[#0C0F14] hover:bg-[#1e2d4a] px-2 py-0.5 text-[11px] text-[#4a5a7a] transition-colors"
+                      className="rounded border border-[#1e2d4a] bg-[#0C0F14] hover:bg-ibf-primary-light px-2 py-0.5 text-[11px] text-ibf-muted transition-colors"
                     >
                       + {qs}
                     </button>
@@ -269,7 +269,7 @@ export default function ProjectRolesPage() {
                         onClick={() => setCommitment(c)}
                         className={`flex justify-start rounded-lg border px-3 py-2 text-sm transition-colors ${
                           commitment === c
-                            ? 'border-blue-500 bg-blue-500/10 text-blue-400 font-semibold'
+                            ? 'border-ibf-primary bg-blue-500/10 text-ibf-primary font-semibold'
                             : 'border-[#1e2d4a] bg-[#0C0F14] text-[#8899bb] hover:border-[#2a3f65]'
                         }`}
                       >
@@ -301,21 +301,21 @@ export default function ProjectRolesPage() {
               <button
                 onClick={handleAddRole}
                 disabled={!formValid || submitting}
-                className="mt-2 w-full flex justify-center items-center rounded-lg bg-blue-600 h-[48px] text-sm font-semibold text-white transition-opacity hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-2 w-full flex justify-center items-center rounded-lg bg-ibf-primary h-[48px] text-sm font-semibold text-ibf-heading transition-opacity hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? <Loader2 size={18} className="animate-spin" /> : 'Add role'}
               </button>
             </div>
           </div>
         ) : (
-          <div className="rounded-xl border border-[#1e2d4a] bg-[#111827] p-6 text-center text-[#8899bb] font-dm text-sm">
+          <div className="rounded-xl border border-[#1e2d4a] bg-ibf-surface p-6 text-center text-[#8899bb] font-dm text-sm">
             Maximum 5 roles reached. You cannot add any more roles to this project.
           </div>
         )}
 
         <Link
           href="/founder/dashboard"
-          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3.5 text-sm font-bold text-white transition-opacity hover:bg-indigo-500"
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3.5 text-sm font-bold text-ibf-heading transition-opacity hover:bg-indigo-500"
         >
           Done — Go to dashboard <ArrowRight size={16} />
         </Link>

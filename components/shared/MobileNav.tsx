@@ -43,7 +43,7 @@ export default function MobileNav() {
             key={link.label}
             href={link.href}
             className={`flex-1 flex flex-col items-center justify-center min-h-[44px] relative transition-colors ${
-              isActive ? '' : 'text-[#BDB5A8]'
+              isActive ? '' : 'text-ibf-hint'
             }`}
             style={{ color: isActive ? activeColor : undefined }}
           >

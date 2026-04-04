@@ -66,13 +66,13 @@ export default async function FounderDashboard() {
         <h1 className="m-0 mb-1 font-display text-2xl font-bold text-[#f0f0ff]">
           Welcome back, {firstName} 👋
         </h1>
-        <p className="m-0 text-sm text-gray-500">Here&apos;s what&apos;s happening with your projects</p>
+        <p className="m-0 text-sm text-ibf-hint">Here&apos;s what&apos;s happening with your projects</p>
       </div>
 
       {/* Stats row */}
       <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <StatCard label="Total Projects" value={stats.projects} icon={<FolderOpen size={16} className="text-violet-400" />} color="violet" />
-        <StatCard label="Open Roles" value={stats.openRoles} icon={<Briefcase size={16} className="text-blue-400" />} color="blue" />
+        <StatCard label="Open Roles" value={stats.openRoles} icon={<Briefcase size={16} className="text-ibf-primary" />} color="blue" />
         <StatCard label="Applications" value={stats.applications} icon={<FileText size={16} className="text-amber-400" />} color="amber" />
         <StatCard label="Team Members" value={stats.team} icon={<Users size={16} className="text-emerald-400" />} color="emerald" />
       </div>
@@ -80,24 +80,24 @@ export default async function FounderDashboard() {
       {/* Projects section */}
       <div className="mb-4 flex items-center justify-between">
         <h2 className="m-0 font-display text-lg font-bold text-[#f0f0ff]">Your projects</h2>
-        <Link href="/founder/projects/new" className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-[13px] font-semibold text-white no-underline hover:bg-blue-500">
+        <Link href="/founder/projects/new" className="flex items-center gap-1.5 rounded-lg bg-ibf-primary px-3.5 py-2 text-[13px] font-semibold text-ibf-heading no-underline hover:bg-blue-500">
           <Plus size={15} /> New project
         </Link>
       </div>
 
       {!projects || projects.length === 0 ? (
         /* Empty state */
-        <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#1e2a3a] bg-[#111827] px-8 py-16 text-center">
-          <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-dashed border-[#1e2a3a]">
+        <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-ibf-border bg-ibf-surface px-8 py-16 text-center">
+          <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-dashed border-ibf-border">
             <FolderOpen size={32} className="text-gray-600" />
           </div>
           <h3 className="m-0 mb-2 font-display text-xl font-bold text-[#f0f0ff]">
             You haven&apos;t posted a project yet
           </h3>
-          <p className="m-0 mb-6 max-w-sm text-sm text-gray-500">
+          <p className="m-0 mb-6 max-w-sm text-sm text-ibf-hint">
             Share your startup idea and let talented students discover and apply to work with you.
           </p>
-          <Link href="/founder/projects/new" className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white no-underline hover:bg-blue-500">
+          <Link href="/founder/projects/new" className="flex items-center gap-2 rounded-xl bg-ibf-primary px-6 py-3 text-sm font-semibold text-ibf-heading no-underline hover:bg-blue-500">
             <Plus size={16} /> Post your first project
           </Link>
         </div>
@@ -112,10 +112,10 @@ export default async function FounderDashboard() {
               <div
                 key={project.id}
                 data-index={i}
-                className="project-row flex items-center gap-4 rounded-[10px] border border-[#1e2a3a] bg-[#111827] p-4 transition-colors hover:border-[#2a3a5a]"
+                className="project-row flex items-center gap-4 rounded-[10px] border border-ibf-border bg-ibf-surface p-4 transition-colors hover:border-[#2a3a5a]"
               >
                 {/* Thumbnail */}
-                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-[#1e2a3a]">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-ibf-border">
                   {project.cover_image_url ? (
                     <Image src={project.cover_image_url} alt={project.title} fill className="object-cover" />
                   ) : (
@@ -130,12 +130,12 @@ export default async function FounderDashboard() {
                   <div className="mb-1 flex flex-wrap items-center gap-2">
                     <span className="font-display text-[15px] font-semibold text-[#f0f0ff] truncate">{project.title}</span>
                     <StatusBadge status={project.status} />
-                    <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-2 py-0.5 text-[11px] font-medium text-blue-400">
+                    <span className="rounded-full border border-ibf-primary/30 bg-blue-500/10 px-2 py-0.5 text-[11px] font-medium text-ibf-primary">
                       {project.stage}
                     </span>
                   </div>
-                  <p className="m-0 mb-1.5 truncate text-[13px] text-gray-500">{project.tagline}</p>
-                  <div className="flex flex-wrap gap-3 text-[12px] text-gray-500">
+                  <p className="m-0 mb-1.5 truncate text-[13px] text-ibf-hint">{project.tagline}</p>
+                  <div className="flex flex-wrap gap-3 text-[12px] text-ibf-hint">
                     <span className="flex items-center gap-1"><Briefcase size={11} /> {openRoles} role{openRoles !== 1 ? 's' : ''} open</span>
                     <span className={`flex items-center gap-1 ${pendingApps > 0 ? 'text-amber-400' : ''}`}>
                       <FileText size={11} /> {totalApps} application{totalApps !== 1 ? 's' : ''}
@@ -148,13 +148,13 @@ export default async function FounderDashboard() {
                 <div className="flex shrink-0 items-center gap-2">
                   <Link
                     href={`/founder/projects/${project.id}/applications`}
-                    className="rounded-lg border border-[#1e2a3a] px-3 py-1.5 text-[13px] font-medium text-gray-300 no-underline transition-colors hover:bg-[#1e2a3a]"
+                    className="rounded-lg border border-ibf-border px-3 py-1.5 text-[13px] font-medium text-gray-300 no-underline transition-colors hover:bg-ibf-border"
                   >
                     Applications
                   </Link>
                   <Link
                     href={`/founder/projects/${project.id}`}
-                    className="rounded-lg border border-[#1e2a3a] px-3 py-1.5 text-[13px] font-medium text-gray-300 no-underline transition-colors hover:bg-[#1e2a3a]"
+                    className="rounded-lg border border-ibf-border px-3 py-1.5 text-[13px] font-medium text-gray-300 no-underline transition-colors hover:bg-ibf-border"
                   >
                     Edit
                   </Link>
@@ -176,10 +176,10 @@ function StatCard({ label, value, icon, color }: {
     amber: 'from-amber-500/10', emerald: 'from-emerald-500/10',
   }
   return (
-    <div className={`rounded-xl border border-[#1e2a3a] bg-[#111827] p-5 bg-gradient-to-br ${ringClass[color]} to-transparent`}>
+    <div className={`rounded-xl border border-ibf-border bg-ibf-surface p-5 bg-gradient-to-br ${ringClass[color]} to-transparent`}>
       <div className="mb-3 flex items-center gap-2">
         {icon}
-        <span className="text-xs font-medium uppercase tracking-wide text-gray-500">{label}</span>
+        <span className="text-xs font-medium uppercase tracking-wide text-ibf-hint">{label}</span>
       </div>
       <div className="font-display text-3xl font-bold text-[#f0f0ff]">{value}</div>
     </div>

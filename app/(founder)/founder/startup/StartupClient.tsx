@@ -134,12 +134,12 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
         transition={{ duration: 0.5 }}
       >
         <div className="flex items-center justify-between mb-8">
-          <h1 className="font-sans text-[28px] font-extrabold text-ibf-heading">
+          <h1 className="font-['Bricolage_Grotesque',sans-serif] text-[28px] font-extrabold text-ibf-heading">
             My Startup
           </h1>
           <button 
             onClick={() => setShowPreview(!showPreview)}
-            className="flex items-center gap-2 rounded-lg bg-ibf-surface px-3 py-1.5 font-sans text-[13px] font-medium text-ibf-body transition-colors hover:bg-ibf-border lg:hidden xl:flex"
+            className="flex items-center gap-2 rounded-lg bg-ibf-surface px-3 py-1.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-medium text-ibf-body transition-colors hover:bg-ibf-border lg:hidden xl:flex"
           >
             <Eye size={16} /> 
             {showPreview ? 'Hide Preview' : 'Show Preview'}
@@ -150,7 +150,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
           
           {/* Section 1: Identity */}
           <section className="space-y-6">
-            <h2 className="font-sans text-[18px] font-bold text-ibf-heading">Identity</h2>
+            <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[18px] font-bold text-ibf-heading">Identity</h2>
             
             <div className="flex items-center gap-6">
               <label htmlFor="logo-upload" className="group relative flex h-[80px] w-[80px] cursor-pointer flex-col items-center justify-center overflow-hidden rounded-full border-2 border-dashed border-ibf-border bg-ibf-bg transition-colors hover:border-ibf-primary">
@@ -161,8 +161,8 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                     <Upload size={24} />
                   </div>
                 )}
-                <div className="absolute inset-0 hidden items-center justify-center bg-black/40 group-hover:flex">
-                  <ImageIcon className="text-white" size={20} />
+                <div className="absolute inset-0 hidden items-center justify-center bg-ibf-bg/40 group-hover:flex">
+                  <ImageIcon className="text-ibf-heading" size={20} />
                 </div>
                 <input 
                   type="file" 
@@ -173,8 +173,8 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                 />
               </label>
               <div className="flex-1">
-                <p className="font-sans text-[15px] font-semibold text-ibf-heading">Startup Logo</p>
-                <p className="font-sans text-[13px] text-ibf-muted">Upload a square image, max 5MB.</p>
+                <p className="font-['Bricolage_Grotesque',sans-serif] text-[15px] font-semibold text-ibf-heading">Startup Logo</p>
+                <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted">Upload a square image, max 5MB.</p>
               </div>
             </div>
 
@@ -185,7 +185,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="What do you call it?"
-                className="w-full border-0 border-b-2 border-ibf-border bg-transparent pb-2 font-sans text-[24px] font-bold text-ibf-heading focus:border-ibf-primary focus:outline-none focus:ring-0 transition-colors"
+                className="w-full border-0 border-b-2 border-ibf-border bg-transparent pb-2 font-['Bricolage_Grotesque',sans-serif] text-[24px] font-bold text-ibf-heading focus:border-ibf-primary focus:outline-none focus:ring-0 transition-colors"
               />
             </div>
             
@@ -197,10 +197,10 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                 value={formData.tagline}
                 onChange={handleInputChange}
                 placeholder="One sentence that makes people lean in."
-                className="w-full border-0 border-b-2 border-ibf-border bg-transparent pb-2 font-serif text-[18px] italic text-ibf-heading focus:border-ibf-primary focus:outline-none focus:ring-0 transition-colors"
+                className="w-full border-0 border-b-2 border-ibf-border bg-transparent pb-2 font-['Instrument_Serif',serif] italic text-[18px] italic text-ibf-heading focus:border-ibf-primary focus:outline-none focus:ring-0 transition-colors"
                 style={{ fontFamily: 'Instrument Serif, serif' }}
               />
-              <div className="mt-1 text-right font-sans text-[11px] text-ibf-muted">{formData.tagline.length}/140</div>
+              <div className="mt-1 text-right font-['Bricolage_Grotesque',sans-serif] text-[11px] text-ibf-muted">{formData.tagline.length}/140</div>
             </div>
 
             <div>
@@ -231,8 +231,8 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
           {/* Section 2: Your Story */}
           <section className="space-y-4">
             <div>
-              <h2 className="font-sans text-[18px] font-bold text-ibf-heading">Your Story</h2>
-              <p className="font-sans text-[14px] font-light text-ibf-muted">Tell students why this matters.</p>
+              <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[18px] font-bold text-ibf-heading">Your Story</h2>
+              <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-light text-ibf-muted">Tell students why this matters.</p>
             </div>
             <textarea
               name="description"
@@ -247,7 +247,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
 
           {/* Section 3: Details */}
           <section className="space-y-6">
-            <h2 className="font-sans text-[18px] font-bold text-ibf-heading">Details</h2>
+            <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[18px] font-bold text-ibf-heading">Details</h2>
             
             <div>
               <label className="label">Current Stage</label>
@@ -257,9 +257,9 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                     key={stage}
                     type="button"
                     onClick={() => setFormData(p => ({ ...p, stage }))}
-                    className={`rounded-full px-4 py-2 font-sans text-[13px] font-medium transition-colors ${
+                    className={`rounded-full px-4 py-2 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-medium transition-colors ${
                       formData.stage === stage
-                        ? 'bg-ibf-heading text-white border border-ibf-heading'
+                        ? 'bg-ibf-heading text-ibf-heading border border-ibf-heading'
                         : 'bg-white text-ibf-body border border-ibf-border hover:border-ibf-primary hover:bg-ibf-surface'
                     }`}
                   >
@@ -341,7 +341,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
 
           {/* Section 4: Looking for */}
           <section className="space-y-6">
-            <h2 className="font-sans text-[18px] font-bold text-ibf-heading">What you're looking for</h2>
+            <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[18px] font-bold text-ibf-heading">What you're looking for</h2>
             
             <div>
               <label className="label">Skills you need on your team</label>
@@ -355,7 +355,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                       exit={{ scale: 0.8, opacity: 0 }}
                       layout
                       key={skill} 
-                      className="flex items-center gap-1.5 rounded-lg bg-ibf-surface px-2.5 py-1.5 font-sans text-[13px] font-medium text-ibf-body border border-ibf-border-2"
+                      className="flex items-center gap-1.5 rounded-lg bg-ibf-surface px-2.5 py-1.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-medium text-ibf-body border border-ibf-border-2"
                     >
                       {skill}
                       <button type="button" onClick={() => handleRemoveSkill(skill)} className="text-ibf-muted hover:text-ibf-danger">
@@ -377,7 +377,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                   }}
                   disabled={formData.looking_for.length >= 10}
                   placeholder={formData.looking_for.length < 10 ? "Type a skill & drop 'Enter'" : "Limit reached (10)"}
-                  className="flex-1 bg-transparent min-w-[150px] p-1.5 font-sans text-[14px] text-ibf-heading focus:outline-none disabled:opacity-50"
+                  className="flex-1 bg-transparent min-w-[150px] p-1.5 font-['Bricolage_Grotesque',sans-serif] text-[14px] text-ibf-heading focus:outline-none disabled:opacity-50"
                 />
               </div>
 
@@ -388,7 +388,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                     type="button"
                     onClick={() => handleAddSkill(skill)}
                     disabled={formData.looking_for.includes(skill) || formData.looking_for.length >= 10}
-                    className="flex items-center gap-1 rounded bg-white border border-ibf-border px-2 py-1 font-sans text-[11px] font-medium text-ibf-muted hover:border-ibf-primary hover:text-ibf-heading hover:bg-ibf-surface disabled:opacity-40 transition-colors"
+                    className="flex items-center gap-1 rounded bg-white border border-ibf-border px-2 py-1 font-['Bricolage_Grotesque',sans-serif] text-[11px] font-medium text-ibf-muted hover:border-ibf-primary hover:text-ibf-heading hover:bg-ibf-surface disabled:opacity-40 transition-colors"
                   >
                     <Plus size={10} /> {skill}
                   </button>
@@ -406,10 +406,10 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                 onChange={handleInputChange}
                 className="h-5 w-5 rounded border-gray-300 text-ibf-primary focus:ring-ibf-primary"
               />
-              <label htmlFor="is_public" className="font-sans text-[14px] font-medium text-ibf-heading cursor-pointer select-none">
+              <label htmlFor="is_public" className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-medium text-ibf-heading cursor-pointer select-none">
                 Make startup profile public
               </label>
-              <span className="ml-auto font-sans text-[12px] text-ibf-muted">Shows on student discovery</span>
+              <span className="ml-auto font-['Bricolage_Grotesque',sans-serif] text-[12px] text-ibf-muted">Shows on student discovery</span>
             </div>
           </section>
 
@@ -426,7 +426,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100 }}
           >
-            <h3 className="font-sans text-[16px] font-bold text-ibf-heading mb-4 flex items-center gap-2">
+            <h3 className="font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading mb-4 flex items-center gap-2">
               <Eye size={16} className="text-ibf-muted"/> Live Interactive Preview
             </h3>
             
@@ -447,13 +447,13 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                       {formData.logo_url ? (
                         <Image src={formData.logo_url} alt="Logo" width={64} height={64} className="h-full w-full object-cover" />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center font-sans text-2xl font-bold text-ibf-primary bg-ibf-primary-light">
+                        <div className="flex h-full w-full items-center justify-center font-['Bricolage_Grotesque',sans-serif] text-2xl font-bold text-ibf-primary bg-ibf-primary-light">
                           {formData.name ? formData.name.charAt(0).toUpperCase() : '?'}
                         </div>
                       )}
                     </motion.div>
                     <div>
-                      <h4 className="font-sans text-[20px] font-extrabold text-ibf-heading">
+                      <h4 className="font-['Bricolage_Grotesque',sans-serif] text-[20px] font-extrabold text-ibf-heading">
                         {formData.name || 'Startup Name'}
                       </h4>
                       {formData.category && (
@@ -471,19 +471,19 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                       transition={{ repeat: Infinity, duration: 2 }}
                       className="h-1.5 w-1.5 rounded-full bg-ibf-success"
                     />
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-wider text-ibf-success">Building</span>
+                    <span className="font-['Bricolage_Grotesque',sans-serif] text-[10px] font-bold uppercase tracking-wider text-ibf-success">Building</span>
                   </div>
                 </div>
 
                 <div className="relative mt-5 z-10">
-                  <p className="font-serif text-[22px] italic leading-tight text-ibf-heading font-serif-italic">
+                  <p className="font-['Instrument_Serif',serif] italic text-[22px] italic leading-tight text-ibf-heading font-['Instrument_Serif',serif] italic-italic">
                     "{formData.tagline || 'A brilliant vision awaiting a compelling hook.'}"
                   </p>
                 </div>
               </div>
 
               <div className="p-6 pb-4">
-                <p className="font-sans text-[14px] font-light leading-relaxed text-ibf-body">
+                <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-light leading-relaxed text-ibf-body">
                   {formData.description ? (
                     formData.description.length > 120 ? formData.description.substring(0, 120) + '...' : formData.description
                   ) : (
@@ -494,17 +494,17 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                 <div className="mt-6 flex items-center gap-5 border-t border-ibf-border pt-5">
                   <div className="flex flex-col">
                     <span className="label">Stage</span>
-                    <span className="mt-0.5 font-sans text-[13px] font-semibold text-ibf-heading">{formData.stage || '—'}</span>
+                    <span className="mt-0.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading">{formData.stage || '—'}</span>
                   </div>
                   <div className="flex flex-col">
                     <span className="label">Team</span>
-                    <span className="mt-0.5 flex items-center gap-1.5 font-sans text-[13px] font-semibold text-ibf-heading">
+                    <span className="mt-0.5 flex items-center gap-1.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading">
                       <Users size={14} className="text-ibf-primary" /> {formData.team_size || '—'}
                     </span>
                   </div>
                   <div className="flex flex-col">
                     <span className="label">Founded</span>
-                    <span className="mt-0.5 flex items-center gap-1.5 font-sans text-[13px] font-semibold text-ibf-heading">
+                    <span className="mt-0.5 flex items-center gap-1.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading">
                       <Calendar size={14} className="text-ibf-primary" /> {formData.founded_year || '—'}
                     </span>
                   </div>
@@ -534,7 +534,7 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
                   whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.95 }}
                   title="View Page" 
-                  className="flex items-center gap-1 rounded-xl bg-ibf-heading px-4 py-2 font-sans text-[13px] font-bold text-white hover:bg-black transition-colors shadow-sm"
+                  className="flex items-center gap-1 rounded-xl bg-ibf-heading px-4 py-2 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-bold text-ibf-heading hover:bg-ibf-bg transition-colors shadow-sm"
                 >
                   View Details <ChevronRight size={14} />
                 </motion.button>
@@ -554,8 +554,8 @@ export default function StartupClient({ founderId, initialStartup }: { founderId
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div>
-             <p className="font-sans text-[14px] font-bold text-ibf-heading">Save Startup Profile</p>
-             <p className="font-sans text-[12px] text-ibf-muted">Changes will be live instantly across IBF.</p>
+             <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-bold text-ibf-heading">Save Startup Profile</p>
+             <p className="font-['Bricolage_Grotesque',sans-serif] text-[12px] text-ibf-muted">Changes will be live instantly across IBF.</p>
           </div>
           <button
             onClick={handleSave}

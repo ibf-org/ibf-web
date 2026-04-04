@@ -29,20 +29,20 @@ export default function FounderSidebar({ open, onClose }: Props) {
       {/* Mobile overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-30 bg-ibf-bg/60 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
       )}
 
       {/* Sidebar panel */}
       <aside className={`
-        fixed left-0 top-0 z-40 flex h-full w-[260px] flex-col border-r border-[#1e2a3a]
-        bg-[#111827] transition-transform duration-300
+        fixed left-0 top-0 z-40 flex h-full w-[260px] flex-col border-r border-ibf-border
+        bg-ibf-surface transition-transform duration-300
         ${open ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
         {/* Logo + close (mobile) */}
-        <div className="flex h-14 items-center justify-between px-5 border-b border-[#1e2a3a]">
+        <div className="flex h-14 items-center justify-between px-5 border-b border-ibf-border">
           <Link href="/founder/dashboard" className="flex items-center gap-2.5 no-underline">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500">
               <Zap size={16} color="white" fill="white" />
@@ -59,7 +59,7 @@ export default function FounderSidebar({ open, onClose }: Props) {
             </span>
             <button
               onClick={onClose}
-              className="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 hover:bg-[#1e2a3a] hover:text-gray-300 lg:hidden"
+              className="flex h-7 w-7 items-center justify-center rounded-md text-ibf-hint hover:bg-ibf-border hover:text-gray-300 lg:hidden"
               aria-label="Close sidebar"
             >
               <X size={16} />
@@ -81,12 +81,12 @@ export default function FounderSidebar({ open, onClose }: Props) {
                     flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium no-underline
                     transition-all duration-150
                     ${active
-                      ? 'border-l-2 border-blue-500 bg-[#1e2d4a] pl-[10px] text-blue-400'
-                      : 'border-l-2 border-transparent text-gray-400 hover:bg-[#1e2d4a] hover:text-gray-200'
+                      ? 'border-l-2 border-ibf-primary bg-ibf-primary-light pl-[10px] text-ibf-primary'
+                      : 'border-l-2 border-transparent text-ibf-muted hover:bg-ibf-primary-light hover:text-gray-200'
                     }
                   `}
                 >
-                  <Icon size={16} className={active ? 'text-blue-400' : 'text-gray-500'} />
+                  <Icon size={16} className={active ? 'text-ibf-primary' : 'text-ibf-hint'} />
                   {label}
                 </Link>
               )
@@ -100,19 +100,19 @@ export default function FounderSidebar({ open, onClose }: Props) {
                 flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium no-underline
                 transition-all duration-150 border-l-2
                 ${pathname?.startsWith('/u/')
-                  ? 'border-blue-500 bg-[#1e2d4a] pl-[10px] text-blue-400'
-                  : 'border-transparent text-gray-400 hover:bg-[#1e2d4a] hover:text-gray-200'
+                  ? 'border-ibf-primary bg-ibf-primary-light pl-[10px] text-ibf-primary'
+                  : 'border-transparent text-ibf-muted hover:bg-ibf-primary-light hover:text-gray-200'
                 }
               `}
             >
-              <User size={16} className={pathname?.startsWith('/u/') ? 'text-blue-400' : 'text-gray-500'} />
+              <User size={16} className={pathname?.startsWith('/u/') ? 'text-ibf-primary' : 'text-ibf-hint'} />
               Profile
             </Link>
           </div>
         </nav>
 
         {/* Bottom user section */}
-        <div className="border-t border-[#1e2a3a] px-4 py-4">
+        <div className="border-t border-ibf-border px-4 py-4">
           <div className="flex items-center gap-3">
             <UserButton />
             <div className="min-w-0 flex-1">

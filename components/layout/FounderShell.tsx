@@ -55,10 +55,10 @@ export default function FounderShell({ children }: { children: React.ReactNode }
   }, [pathname])
 
   const renderSidebarContent = () => (
-    <div className="flex h-full flex-col bg-white font-sans">
+    <div className="flex h-full flex-col bg-white font-['Bricolage_Grotesque',sans-serif]">
       {/* TOP SECTION */}
       <div className="flex items-center gap-3 border-b border-ibf-border px-4 py-5">
-        <Link href="/founder/dashboard" className="flex items-center gap-1 font-sans text-[18px] font-extrabold text-ibf-heading tracking-tight no-underline">
+        <Link href="/founder/dashboard" className="flex items-center gap-1 font-['Bricolage_Grotesque',sans-serif] text-[18px] font-extrabold text-ibf-heading tracking-tight no-underline">
           <Zap size={18} className="text-ibf-primary" />
           IBF<span className="h-1.5 w-1.5 rounded-full bg-ibf-primary"></span>
         </Link>
@@ -84,7 +84,7 @@ export default function FounderShell({ children }: { children: React.ReactNode }
               }`}
             >
               <Icon size={18} className={isActive ? 'text-ibf-primary' : 'text-ibf-muted'} />
-              <span className="font-sans text-[14px]">{item.label}</span>
+              <span className="font-['Bricolage_Grotesque',sans-serif] text-[14px]">{item.label}</span>
             </Link>
           )
         })}
@@ -98,10 +98,10 @@ export default function FounderShell({ children }: { children: React.ReactNode }
           />
           {isLoaded && user && (
             <div className="flex flex-col min-w-0">
-              <span className="truncate font-sans text-[13px] font-bold text-ibf-heading">
+              <span className="truncate font-['Bricolage_Grotesque',sans-serif] text-[13px] font-bold text-ibf-heading">
                 {user.fullName || user.username || 'User'}
               </span>
-              <span className="font-sans text-[11px] font-semibold text-ibf-muted">Founder</span>
+              <span className="font-['Bricolage_Grotesque',sans-serif] text-[11px] font-semibold text-ibf-muted">Founder</span>
             </div>
           )}
         </div>
@@ -111,7 +111,7 @@ export default function FounderShell({ children }: { children: React.ReactNode }
 
   return (
     <NotificationsProvider>
-      <div className="flex min-h-screen bg-ibf-bg font-sans">
+      <div className="flex min-h-screen bg-ibf-bg font-['Bricolage_Grotesque',sans-serif]">
         
         {/* DESKTOP SIDEBAR */}
         <aside className="fixed bottom-0 left-0 top-0 hidden w-[260px] border-r border-ibf-border bg-white lg:block z-40 transition-transform">
@@ -144,7 +144,7 @@ export default function FounderShell({ children }: { children: React.ReactNode }
               >
                 <Menu size={20} />
               </button>
-              <h1 className="font-sans text-[18px] font-bold text-ibf-heading tracking-tight">
+              <h1 className="font-['Bricolage_Grotesque',sans-serif] text-[18px] font-bold text-ibf-heading tracking-tight">
                 {getPageTitle()}
               </h1>
             </div>
@@ -165,7 +165,7 @@ export default function FounderShell({ children }: { children: React.ReactNode }
               {/* Mobile quick create */}
               <Link
                 href="/founder/projects/new"
-                className="flex sm:hidden h-8 w-8 items-center justify-center rounded-full bg-ibf-primary text-white"
+                className="flex sm:hidden h-8 w-8 items-center justify-center rounded-full bg-ibf-primary text-ibf-heading"
               >
                 +
               </Link>

@@ -48,13 +48,13 @@ export default function ChatPage() {
           setActiveCommType(null)
           setActiveChannel(channel)
         }} 
-        className={`flex cursor-pointer items-center justify-between px-4 py-2 border-l-2 transition-all ${active ? 'border-teal-500 bg-[#1e1e3a]/50 text-[#f0f0ff]' : 'border-transparent text-gray-400 hover:bg-[#1e1e3a]/30 hover:text-gray-300'}`}
+        className={`flex cursor-pointer items-center justify-between px-4 py-2 border-l-2 transition-all ${active ? 'border-teal-500 bg-ibf-surface/50 text-[#f0f0ff]' : 'border-transparent text-ibf-muted hover:bg-ibf-surface/30 hover:text-gray-300'}`}
       >
         <span className="truncate text-sm font-medium pr-2">
           {channel.data?.name || 'Direct Message'}
         </span>
         {unread > 0 && (
-          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-500 text-[10px] font-bold text-white">
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-500 text-[10px] font-bold text-ibf-heading">
             {unread}
           </span>
         )}
@@ -84,15 +84,15 @@ export default function ChatPage() {
       `}} />
       
       {/* LEFT SIDEBAR */}
-      <div className="flex w-[280px] shrink-0 flex-col border-r border-[#1e1e3a] bg-[#111827] overflow-y-auto">
+      <div className="flex w-[280px] shrink-0 flex-col border-r border-ibf-border bg-ibf-surface overflow-y-auto">
         <div className="p-4">
-          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">Community Channels</h2>
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-ibf-hint">Community Channels</h2>
           <div className="space-y-0.5">
             {COMMUNITY_CHANNELS.map((c) => (
               <button
                 key={c.id}
                 onClick={() => handleCommunityClick(c.id)}
-                className={`flex w-full items-center justify-between border-l-2 px-3 py-2 text-left transition-all ${activeCommType === c.id ? 'border-blue-500 bg-[#1e1e3a]/50 text-[#f0f0ff]' : 'border-transparent text-gray-400 hover:bg-[#1e1e3a]/30 hover:text-gray-300'}`}
+                className={`flex w-full items-center justify-between border-l-2 px-3 py-2 text-left transition-all ${activeCommType === c.id ? 'border-ibf-primary bg-ibf-surface/50 text-[#f0f0ff]' : 'border-transparent text-ibf-muted hover:bg-ibf-surface/30 hover:text-gray-300'}`}
               >
                 <div className="flex items-center gap-2 truncate text-sm font-medium">
                   <Hash size={14} className="opacity-50" />
@@ -104,7 +104,7 @@ export default function ChatPage() {
         </div>
 
         <div className="mt-4">
-          <h2 className="mb-2 px-4 text-xs font-bold uppercase tracking-wider text-gray-500">Your Team Chats</h2>
+          <h2 className="mb-2 px-4 text-xs font-bold uppercase tracking-wider text-ibf-hint">Your Team Chats</h2>
           <ChannelList 
             filters={filtersTeam} 
             sort={{ last_message_at: -1 }}
@@ -114,8 +114,8 @@ export default function ChatPage() {
 
         <div className="mt-6 mb-4">
           <div className="mb-2 flex items-center justify-between px-4">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500">Direct Messages</h2>
-            <button className="text-xl font-medium text-gray-400 transition hover:text-teal-400">+</button>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-ibf-hint">Direct Messages</h2>
+            <button className="text-xl font-medium text-ibf-muted transition hover:text-teal-400">+</button>
           </div>
           <ChannelList 
             filters={filtersDM} 

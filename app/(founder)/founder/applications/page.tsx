@@ -86,18 +86,18 @@ export default function FounderApplicationsPage() {
   const STATUS_TABS = ['All', 'Pending', 'Reviewing', 'Accepted', 'Rejected']
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#0d1117] text-white">
+    <div className="flex min-h-screen flex-col bg-[#0d1117] text-ibf-heading">
       <main className="flex-1 p-6 md:p-8 lg:p-10 max-w-[1400px] mx-auto w-full">
         
         {/* Header & Stats */}
         <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="flex items-center gap-4">
-            <h1 className="font-syne text-2xl font-bold text-white">All Applications</h1>
-            <div className="flex h-6 items-center gap-2 rounded-full border border-[#1e2d4a] bg-[#111827] px-3 font-dm text-xs text-[#8899bb]">
-              <span className="font-semibold text-white">{totalCount}</span> total
-              <span className="mx-1 h-3 w-px bg-[#1e2d4a]"></span>
-              <span className="font-semibold text-white">{pendingCount}</span> pending
-              <span className="mx-1 h-3 w-px bg-[#1e2d4a]"></span>
+            <h1 className="font-syne text-2xl font-bold text-ibf-heading">All Applications</h1>
+            <div className="flex h-6 items-center gap-2 rounded-full border border-[#1e2d4a] bg-ibf-surface px-3 font-dm text-xs text-[#8899bb]">
+              <span className="font-semibold text-ibf-heading">{totalCount}</span> total
+              <span className="mx-1 h-3 w-px bg-ibf-primary-light"></span>
+              <span className="font-semibold text-ibf-heading">{pendingCount}</span> pending
+              <span className="mx-1 h-3 w-px bg-ibf-primary-light"></span>
               <span className="font-semibold text-emerald-400">{acceptedCount}</span> accepted
             </div>
           </div>
@@ -112,8 +112,8 @@ export default function FounderApplicationsPage() {
                 onClick={() => setStatusFilter(tab)}
                 className={`flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
                   statusFilter === tab 
-                    ? 'bg-blue-600 font-semibold text-white' 
-                    : 'bg-[#111827] text-[#8899bb] hover:bg-[#1e2d4a] hover:text-[#e0e8ff]'
+                    ? 'bg-ibf-primary font-semibold text-ibf-heading' 
+                    : 'bg-ibf-surface text-[#8899bb] hover:bg-ibf-primary-light hover:text-ibf-primary'
                 }`}
               >
                 {tab}
@@ -122,12 +122,12 @@ export default function FounderApplicationsPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="font-dm text-sm text-[#4a5a7a]">Filter by:</span>
+            <span className="font-dm text-sm text-ibf-muted">Filter by:</span>
             <select
               title="Filter by project"
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="rounded-lg border border-[#1e2d4a] bg-[#111827] px-3 py-1.5 text-sm text-[#e0e8ff] focus:border-blue-500 focus:outline-none"
+              className="rounded-lg border border-[#1e2d4a] bg-ibf-surface px-3 py-1.5 text-sm text-[#e0e8ff] focus:border-ibf-primary focus:outline-none"
             >
               <option value="All projects">All projects</option>
               {projectsList.map(proj => (
@@ -138,13 +138,13 @@ export default function FounderApplicationsPage() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto rounded-xl border border-[#1e2d4a] bg-[#111827]">
+        <div className="overflow-x-auto rounded-xl border border-[#1e2d4a] bg-ibf-surface">
           {loading ? (
             <div className="flex h-64 items-center justify-center text-[#8899bb]">
-              <div className="h-6 w-6 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"></div>
+              <div className="h-6 w-6 animate-spin rounded-full border-2 border-ibf-primary border-t-transparent"></div>
             </div>
           ) : filteredApps.length === 0 ? (
-            <div className="flex h-64 flex-col items-center justify-center text-[#4a5a7a]">
+            <div className="flex h-64 flex-col items-center justify-center text-ibf-muted">
               <Filter size={32} className="mb-3 opacity-50" />
               <p className="font-dm text-sm">No applications found matching these filters.</p>
             </div>
@@ -162,12 +162,12 @@ export default function FounderApplicationsPage() {
               </thead>
               <tbody className="divide-y divide-[#1e2d4a]">
                 {filteredApps.map((app) => (
-                  <tr key={app.id} className="transition-colors hover:bg-[#1e2d4a]/30">
+                  <tr key={app.id} className="transition-colors hover:bg-ibf-primary-light/30">
                     
                     <td className="px-6 py-4">
                       <Link href={`/u/${app.student?.username}`} className="flex items-center gap-3 hover:opacity-80">
                         {app.student?.avatar_url ? (
-                          <img src={app.student.avatar_url} alt="" className="h-8 w-8 rounded-full object-cover bg-[#1e2d4a]" />
+                          <img src={app.student.avatar_url} alt="" className="h-8 w-8 rounded-full object-cover bg-ibf-primary-light" />
                         ) : (
                           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-900 text-xs font-bold text-blue-200">
                             {app.student?.full_name?.charAt(0) || '?'}
@@ -194,7 +194,7 @@ export default function FounderApplicationsPage() {
                         app.status === 'accepted' ? 'bg-emerald-500/10 text-emerald-400' :
                         app.status === 'rejected' ? 'bg-red-500/10 text-red-400' :
                         app.status === 'reviewing' ? 'bg-amber-500/10 text-amber-400' :
-                        'bg-blue-500/10 text-blue-400'
+                        'bg-blue-500/10 text-ibf-primary'
                       }`}>
                         {app.status}
                       </span>
@@ -220,7 +220,7 @@ export default function FounderApplicationsPage() {
                         ) : (
                           <Link
                             href={`/founder/projects/${app.role?.project?.id}/applications`}
-                            className="text-xs font-medium text-blue-400 hover:text-blue-300"
+                            className="text-xs font-medium text-ibf-primary hover:text-blue-300"
                           >
                             View details
                           </Link>

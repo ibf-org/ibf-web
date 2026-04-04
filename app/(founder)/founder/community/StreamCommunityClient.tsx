@@ -28,8 +28,8 @@ function CustomChannelPreview(props: any) {
       onClick={() => setActiveChannel?.(channel)}
       className={`w-full flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-left transition-all ${
         active
-          ? 'bg-[#EDE8FF] text-[#5B21B6]'
-          : 'text-[#6B6054] hover:bg-[#F0EDE8] hover:text-[#1A1208]'
+          ? 'bg-[var(--ibf-primary-light)] text-[#5B21B6]'
+          : 'text-[#6B6054] hover:bg-[#F0EDE8] hover:text-ibf-heading'
       }`}
     >
       <span className="text-sm flex-shrink-0 font-mono">#</span>
@@ -38,13 +38,13 @@ function CustomChannelPreview(props: any) {
           {channelName.replace(/^#/, '')}
         </p>
         {lastMessage?.text && (
-          <p className="text-[11px] text-[#9A8E7E] truncate mt-0.5 font-normal">
+          <p className="text-[11px] text-ibf-muted truncate mt-0.5 font-normal">
             {lastMessage.text}
           </p>
         )}
       </div>
       {unread > 0 && (
-        <span className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[#6B4FD8] text-white text-[10px] font-bold px-1">
+        <span className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-[var(--ibf-primary)] text-ibf-heading text-[10px] font-bold px-1">
           {unread > 99 ? '99+' : unread}
         </span>
       )}
@@ -56,12 +56,12 @@ function CustomChannelPreview(props: any) {
 function EmptyState() {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-4 text-center p-8">
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EDE8FF]">
-        <MessageSquare className="text-[#6B4FD8]" size={28} />
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--ibf-primary-light)]">
+        <MessageSquare className="text-[var(--ibf-primary)]" size={28} />
       </div>
       <div>
-        <p className="font-sans text-[16px] font-semibold text-[#1A1208]">Select a channel</p>
-        <p className="font-sans text-[13px] text-[#9A8E7E] mt-1">
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[16px] font-semibold text-ibf-heading">Select a channel</p>
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted mt-1">
           Choose a channel from the sidebar to start chatting
         </p>
       </div>
@@ -74,8 +74,8 @@ function LoadingState({ message }: { message: string }) {
   return (
     <div className="flex h-[calc(100vh-200px)] items-center justify-center">
       <div className="flex flex-col items-center gap-3">
-        <Loader2 className="animate-spin text-[#6B4FD8]" size={32} />
-        <p className="font-sans text-[14px] text-[#9A8E7E]">{message}</p>
+        <Loader2 className="animate-spin text-[var(--ibf-primary)]" size={32} />
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] text-ibf-muted">{message}</p>
       </div>
     </div>
   )
@@ -89,11 +89,11 @@ function ErrorState({ error, onRetry }: { error: string; onRetry: () => void }) 
         <div className="h-14 w-14 rounded-full bg-red-50 flex items-center justify-center">
           <WifiOff className="text-red-400" size={24} />
         </div>
-        <p className="font-sans text-[15px] font-semibold text-[#1A1208]">Chat unavailable</p>
-        <p className="font-sans text-[12px] text-[#9A8E7E] leading-relaxed">{error}</p>
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[15px] font-semibold text-ibf-heading">Chat unavailable</p>
+        <p className="font-['Bricolage_Grotesque',sans-serif] text-[12px] text-ibf-muted leading-relaxed">{error}</p>
         <button
           onClick={onRetry}
-          className="mt-1 rounded-xl bg-[#6B4FD8] px-5 py-2 font-sans text-[13px] font-semibold text-white hover:bg-[#5B21B6] transition-colors"
+          className="mt-1 rounded-xl bg-[var(--ibf-primary)] px-5 py-2 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading hover:bg-[#5B21B6] transition-colors"
         >
           Retry connection
         </button>
@@ -129,21 +129,21 @@ export default function StreamCommunityClient({ userRole = 'student' }: StreamCo
   const userImage = me?.image as string | undefined
 
   return (
-    <div className="ibf-stream-chat h-[calc(100vh-64px-80px)] min-h-[500px] overflow-hidden rounded-2xl border border-[#E8E5DE] bg-white shadow-sm">
+    <div className="ibf-stream-chat h-[calc(100vh-64px-80px)] min-h-[500px] overflow-hidden rounded-2xl border border-[var(--ibf-border)] bg-white shadow-sm">
       <Chat client={client} theme="str-chat__theme-light">
         <div className="flex h-full">
 
           {/* ── Channels Sidebar ─────────────────────────────────────── */}
-          <div className="w-[240px] flex-shrink-0 border-r border-[#E8E5DE] bg-[#FAFAF7] flex flex-col">
+          <div className="w-[240px] flex-shrink-0 border-r border-[var(--ibf-border)] bg-[var(--ibf-bg)] flex flex-col">
             {/* Header */}
-            <div className="border-b border-[#E8E5DE] px-4 py-3.5">
-              <p className="font-sans text-[10px] font-bold uppercase tracking-widest text-[#9A8E7E]">
+            <div className="border-b border-[var(--ibf-border)] px-4 py-3.5">
+              <p className="font-['Bricolage_Grotesque',sans-serif] text-[10px] font-bold uppercase tracking-widest text-ibf-muted">
                 Community
               </p>
             </div>
 
             {/* Channel list */}
-            <div className="flex-1 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-[#E8E5DE]">
+            <div className="flex-1 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-[var(--ibf-border)]">
               <ChannelList
                 filters={filters}
                 sort={sort}
@@ -151,7 +151,7 @@ export default function StreamCommunityClient({ userRole = 'student' }: StreamCo
                 showChannelSearch={false}
                 Preview={(previewProps) => <CustomChannelPreview {...previewProps} />}
                 EmptyStateIndicator={() => (
-                  <p className="px-3 py-4 text-[12px] text-[#9A8E7E] text-center">
+                  <p className="px-3 py-4 text-[12px] text-ibf-muted text-center">
                     No channels yet
                   </p>
                 )}
@@ -159,8 +159,8 @@ export default function StreamCommunityClient({ userRole = 'student' }: StreamCo
             </div>
 
             {/* Connected user footer */}
-            <div className="border-t border-[#E8E5DE] p-3">
-              <div className="flex items-center gap-2.5 rounded-xl bg-[#EDE8FF] px-3 py-2">
+            <div className="border-t border-[var(--ibf-border)] p-3">
+              <div className="flex items-center gap-2.5 rounded-xl bg-[var(--ibf-primary-light)] px-3 py-2">
                 {userImage ? (
                   <img
                     src={userImage}
@@ -168,15 +168,15 @@ export default function StreamCommunityClient({ userRole = 'student' }: StreamCo
                     className="h-7 w-7 rounded-full object-cover flex-shrink-0"
                   />
                 ) : (
-                  <div className="h-7 w-7 rounded-full bg-[#6B4FD8] flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">
+                  <div className="h-7 w-7 rounded-full bg-[var(--ibf-primary)] flex items-center justify-center text-ibf-heading text-[11px] font-bold flex-shrink-0">
                     {userName.slice(0, 2).toUpperCase()}
                   </div>
                 )}
                 <div className="min-w-0">
-                  <p className="truncate font-sans text-[12px] font-semibold text-[#5B21B6]">
+                  <p className="truncate font-['Bricolage_Grotesque',sans-serif] text-[12px] font-semibold text-[#5B21B6]">
                     {userName}
                   </p>
-                  <p className="font-sans text-[10px] capitalize text-[#7C3AED]">{userRole}</p>
+                  <p className="font-['Bricolage_Grotesque',sans-serif] text-[10px] capitalize text-[#7C3AED]">{userRole}</p>
                 </div>
                 {/* Online dot */}
                 <div className="ml-auto h-2 w-2 rounded-full bg-emerald-400 flex-shrink-0" title="Online" />

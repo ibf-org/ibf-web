@@ -50,10 +50,10 @@ export default function DashboardClient({
     >
       {/* HEADER */}
       <motion.div variants={itemVariants}>
-        <h1 className="font-sans text-[32px] font-extrabold text-ibf-heading tracking-tight">
+        <h1 className="font-['Bricolage_Grotesque',sans-serif] text-[32px] font-extrabold text-ibf-heading tracking-tight">
           Hello, {firstName}.
         </h1>
-        <p className="mt-1.5 font-sans text-[16px] font-light text-ibf-muted">
+        <p className="mt-1.5 font-['Bricolage_Grotesque',sans-serif] text-[16px] font-light text-ibf-muted">
           {stats.totalApps === 0 
             ? "Start exploring projects. Your next opportunity is one application away." 
             : "Here's the latest on your applications and discovery."}
@@ -77,7 +77,7 @@ export default function DashboardClient({
               <X size={18} />
             </button>
             
-            <h3 className="font-sans text-[16px] font-bold text-ibf-primary mb-3">
+            <h3 className="font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-primary mb-3">
               Complete your profile to stand out
             </h3>
             
@@ -90,7 +90,7 @@ export default function DashboardClient({
                   className="h-full rounded-full bg-ibf-primary" 
                 />
               </div>
-              <div className="flex-shrink-0 font-sans text-[13px] font-semibold text-ibf-primary">
+              <div className="flex-shrink-0 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-primary">
                 {completionPercent}% complete — add {missingThing}
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function DashboardClient({
             <div className="mt-5">
               <Link 
                 href="/student/profile/edit"
-                className="inline-flex items-center gap-1 font-sans text-[14px] font-bold text-ibf-primary hover:text-ibf-heading transition-colors"
+                className="inline-flex items-center gap-1 font-['Bricolage_Grotesque',sans-serif] text-[14px] font-bold text-ibf-primary hover:text-ibf-heading transition-colors"
               >
                 Complete profile <ArrowRight size={16} />
               </Link>
@@ -124,7 +124,7 @@ export default function DashboardClient({
               <div className={`rounded-[10px] p-2 ${stat.bg}`}><stat.icon size={18} className={stat.color} /></div>
               <span className="label capitalize text-[12px] m-0">{stat.label}</span>
             </div>
-            <div className="font-sans text-4xl font-extrabold text-ibf-heading">{stat.value}</div>
+            <div className="font-['Bricolage_Grotesque',sans-serif] text-4xl font-extrabold text-ibf-heading">{stat.value}</div>
           </motion.div>
         ))}
       </motion.div>
@@ -133,10 +133,10 @@ export default function DashboardClient({
       <motion.div variants={itemVariants}>
         <div className="mb-5 flex items-center justify-between">
           <div>
-            <h2 className="font-sans text-[20px] font-bold text-ibf-heading">Recommended for you</h2>
-            <p className="font-sans text-[14px] font-light text-ibf-muted">Based on your skills</p>
+            <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[20px] font-bold text-ibf-heading">Recommended for you</h2>
+            <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] font-light text-ibf-muted">Based on your skills</p>
           </div>
-          <Link href="/student/discover" className="hidden sm:flex items-center gap-1 font-sans text-[13px] font-bold text-ibf-secondary hover:text-ibf-heading transition-colors">
+          <Link href="/student/discover" className="hidden sm:flex items-center gap-1 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-bold text-ibf-secondary hover:text-ibf-heading transition-colors">
             View Discovery <ArrowRight size={14} />
           </Link>
         </div>
@@ -167,19 +167,19 @@ export default function DashboardClient({
                   )}
                   <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-ibf-heading/70 to-transparent"></div>
                   <div className="absolute bottom-3 left-4">
-                    <span className="rounded-full bg-white/90 backdrop-blur-md px-2.5 py-1 font-sans text-[11px] font-bold text-ibf-secondary shadow-sm">
+                    <span className="rounded-full bg-white/90 backdrop-blur-md px-2.5 py-1 font-['Bricolage_Grotesque',sans-serif] text-[11px] font-bold text-ibf-secondary shadow-sm">
                       {proj.matchCount}/{proj.totalRequired} skills match
                     </span>
                   </div>
                 </div>
                 <div className="p-5 flex flex-col justify-between h-[150px]">
                   <div>
-                    <h3 className="font-sans text-[16px] font-bold text-ibf-heading line-clamp-1">{proj.title}</h3>
-                    <p className="mt-1.5 font-sans text-[13px] text-ibf-body line-clamp-2 leading-relaxed">
+                    <h3 className="font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading line-clamp-1">{proj.title}</h3>
+                    <p className="mt-1.5 font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-body line-clamp-2 leading-relaxed">
                       {proj.tagline}
                     </p>
                   </div>
-                  <Link href={`/student/discover/${proj.id}`} className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-xl border border-ibf-secondary/30 bg-ibf-secondary-light/30 px-3 py-2 font-sans text-[13px] font-bold text-ibf-secondary transition-colors hover:bg-ibf-secondary hover:text-white">
+                  <Link href={`/student/discover/${proj.id}`} className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-xl border border-ibf-secondary/30 bg-ibf-secondary-light/30 px-3 py-2 font-['Bricolage_Grotesque',sans-serif] text-[13px] font-bold text-ibf-secondary transition-colors hover:bg-ibf-secondary hover:text-ibf-heading">
                     Apply Now <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -192,7 +192,7 @@ export default function DashboardClient({
       {/* MY APPLICATIONS */}
       <motion.div variants={itemVariants}>
         <div className="mb-5">
-          <h2 className="font-sans text-[20px] font-bold text-ibf-heading">Recent activity</h2>
+          <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[20px] font-bold text-ibf-heading">Recent activity</h2>
         </div>
         
         {applications.length === 0 ? (
@@ -219,8 +219,8 @@ export default function DashboardClient({
                       <FileText size={20} className="text-ibf-secondary" />
                     </div>
                     <div>
-                      <h4 className="font-sans text-[16px] font-bold text-ibf-heading">{project?.title || 'Unknown Project'}</h4>
-                      <p className="font-sans text-[13px] text-ibf-muted mt-0.5">
+                      <h4 className="font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading">{project?.title || 'Unknown Project'}</h4>
+                      <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted mt-0.5">
                         {role?.title || 'Unknown Role'} <span className="mx-1.5 text-ibf-border-2">•</span> {timeAgo(app.created_at)}
                       </p>
                     </div>
@@ -233,7 +233,7 @@ export default function DashboardClient({
             })}
             
             <div className="mt-4 text-center sm:text-left">
-              <Link href="/student/applications" className="inline-flex items-center gap-1.5 font-sans text-[14px] font-bold text-ibf-secondary hover:text-ibf-heading transition-colors group">
+              <Link href="/student/applications" className="inline-flex items-center gap-1.5 font-['Bricolage_Grotesque',sans-serif] text-[14px] font-bold text-ibf-secondary hover:text-ibf-heading transition-colors group">
                 <span className="border-b-2 border-transparent group-hover:border-ibf-heading transition-colors pb-0.5">View all applications</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>

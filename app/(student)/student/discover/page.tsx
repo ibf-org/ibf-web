@@ -146,13 +146,13 @@ export default function DiscoverPage() {
   const hasFilters = selectedCategories.length > 0 || selectedStages.length > 0 || debouncedSearch !== ''
 
   return (
-    <div className="flex min-h-screen bg-[#0C0F14] text-white">
+    <div className="flex min-h-screen bg-[#0C0F14] text-ibf-heading">
       {/* FILTER SIDEBAR */}
-      <aside className="hidden w-[260px] flex-shrink-0 flex-col border-r border-[#1e2d4a] bg-[#111827] p-6 lg:flex">
-        <h2 className="mb-6 font-syne text-lg font-bold text-white">Filters</h2>
+      <aside className="hidden w-[260px] flex-shrink-0 flex-col border-r border-[#1e2d4a] bg-ibf-surface p-6 lg:flex">
+        <h2 className="mb-6 font-syne text-lg font-bold text-ibf-heading">Filters</h2>
         
         <div className="mb-6">
-          <h3 className="mb-3 font-dm text-sm font-semibold uppercase text-[#4a5a7a]">Category</h3>
+          <h3 className="mb-3 font-dm text-sm font-semibold uppercase text-ibf-muted">Category</h3>
           <div className="flex flex-col gap-2.5">
             {CATEGORIES.map(cat => (
               <label key={cat} className="flex cursor-pointer items-center gap-3">
@@ -160,7 +160,7 @@ export default function DiscoverPage() {
                   type="checkbox"
                   checked={selectedCategories.includes(cat)}
                   onChange={() => toggleCategory(cat)}
-                  className="h-4 w-4 rounded border-[#1e2d4a] bg-[#0C0F14] text-[#1D9E75] focus:ring-[#1D9E75] focus:ring-offset-0"
+                  className="h-4 w-4 rounded border-[#1e2d4a] bg-[#0C0F14] text-ibf-secondary focus:ring-[#1D9E75] focus:ring-offset-0"
                   aria-label={`Filter by ${cat}`}
                 />
                 <span className="font-dm text-sm text-[#e0e8ff]">{cat}</span>
@@ -170,7 +170,7 @@ export default function DiscoverPage() {
         </div>
 
         <div className="mb-6">
-          <h3 className="mb-3 font-dm text-sm font-semibold uppercase text-[#4a5a7a]">Stage</h3>
+          <h3 className="mb-3 font-dm text-sm font-semibold uppercase text-ibf-muted">Stage</h3>
           <div className="flex flex-col gap-2.5">
             {STAGES.map(stage => (
               <label key={stage} className="flex cursor-pointer items-center gap-3">
@@ -178,7 +178,7 @@ export default function DiscoverPage() {
                   type="checkbox"
                   checked={selectedStages.includes(stage)}
                   onChange={() => toggleStage(stage)}
-                  className="h-4 w-4 rounded border-[#1e2d4a] bg-[#0C0F14] text-[#1D9E75] focus:ring-[#1D9E75] focus:ring-offset-0"
+                  className="h-4 w-4 rounded border-[#1e2d4a] bg-[#0C0F14] text-ibf-secondary focus:ring-[#1D9E75] focus:ring-offset-0"
                   aria-label={`Filter by ${stage}`}
                 />
                 <span className="font-dm text-sm text-[#e0e8ff]">{stage}</span>
@@ -190,7 +190,7 @@ export default function DiscoverPage() {
         {hasFilters && (
           <button
             onClick={clearFilters}
-            className="mt-2 text-left font-dm text-sm font-medium text-[#4a5a7a] transition-colors hover:text-[#e0e8ff]"
+            className="mt-2 text-left font-dm text-sm font-medium text-ibf-muted transition-colors hover:text-ibf-primary"
             aria-label="Clear all filters"
           >
             Clear filters
@@ -203,13 +203,13 @@ export default function DiscoverPage() {
         
         {/* SEARCH BAR */}
         <div className="relative mb-6">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#4a5a7a]" size={20} />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-ibf-muted" size={20} />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search projects..."
-            className="w-full rounded-[10px] border border-[#1e2d4a] bg-[#111827] py-3 pl-11 pr-4 font-dm text-[15px] text-white placeholder-[#4a5a7a] focus:border-[#1D9E75] focus:outline-none focus:ring-1 focus:ring-[#1D9E75]"
+            className="w-full rounded-[10px] border border-[#1e2d4a] bg-ibf-surface py-3 pl-11 pr-4 font-dm text-[15px] text-ibf-heading placeholder-[#4a5a7a] focus:border-[#1D9E75] focus:outline-none focus:ring-1 focus:ring-[#1D9E75]"
             aria-label="Search projects"
           />
         </div>
@@ -218,18 +218,18 @@ export default function DiscoverPage() {
         {loading ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map(i => (
-              <div key={i} className="h-[280px] animate-pulse rounded-xl border border-[#1e2d4a] bg-[#111827]"></div>
+              <div key={i} className="h-[280px] animate-pulse rounded-xl border border-[#1e2d4a] bg-ibf-surface"></div>
             ))}
           </div>
         ) : projects.length === 0 ? (
-          <div className="flex h-[400px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#1e2d4a] bg-[#111827]/50 text-center">
-            <Filter className="mb-4 text-[#4a5a7a]" size={32} />
+          <div className="flex h-[400px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#1e2d4a] bg-ibf-surface/50 text-center">
+            <Filter className="mb-4 text-ibf-muted" size={32} />
             <h3 className="font-syne text-lg font-bold text-[#e0e8ff]">No projects match your filters</h3>
             <p className="mt-2 font-dm text-sm text-[#8899bb]">Try adjusting your search or categories to find more opportunities.</p>
             {hasFilters && (
               <button
                 onClick={clearFilters}
-                className="mt-6 rounded-lg bg-[#1e2d4a] px-5 py-2 font-dm text-sm font-medium hover:bg-[#2a3f65]"
+                className="mt-6 rounded-lg bg-ibf-primary-light px-5 py-2 font-dm text-sm font-medium hover:bg-[#2a3f65]"
                 aria-label="Clear filters"
               >
                 Clear filters
@@ -243,8 +243,8 @@ export default function DiscoverPage() {
               const primarySkills = openRoles.flatMap((r: any) => r.skills_required || []).slice(0, 3)
 
               return (
-                <div key={project.id} className="group flex flex-col overflow-hidden rounded-xl border border-[#1e2d4a] bg-[#111827] transition-colors hover:border-[#1D9E75]">
-                  <div className="relative h-[130px] w-full bg-[#1e2d4a]">
+                <div key={project.id} className="group flex flex-col overflow-hidden rounded-xl border border-[#1e2d4a] bg-ibf-surface transition-colors hover:border-[#1D9E75]">
+                  <div className="relative h-[130px] w-full bg-ibf-primary-light">
                     {project.cover_image_url ? (
                       <img src={project.cover_image_url} alt="" className="h-full w-full object-cover" />
                     ) : (
@@ -252,7 +252,7 @@ export default function DiscoverPage() {
                         {project.title.charAt(0)}
                       </div>
                     )}
-                    <span className="absolute right-3 top-3 rounded bg-black/60 px-2 py-0.5 font-dm text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                    <span className="absolute right-3 top-3 rounded bg-ibf-bg/60 px-2 py-0.5 font-dm text-[10px] font-bold uppercase tracking-wider text-ibf-heading backdrop-blur-sm">
                       {project.category}
                     </span>
                   </div>
@@ -265,11 +265,11 @@ export default function DiscoverPage() {
                       {project.founder?.avatar_url ? (
                         <img src={project.founder.avatar_url} alt="" className="h-5 w-5 rounded-full object-cover" />
                       ) : (
-                        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#1e2d4a] text-[10px] font-bold">
+                        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-ibf-primary-light text-[10px] font-bold">
                           {project.founder?.full_name?.charAt(0)}
                         </div>
                       )}
-                      <span className="font-dm text-xs text-[#4a5a7a]">{project.founder?.full_name}</span>
+                      <span className="font-dm text-xs text-ibf-muted">{project.founder?.full_name}</span>
                     </div>
 
                     <div className="mt-4 flex flex-wrap gap-1.5">
@@ -278,16 +278,16 @@ export default function DiscoverPage() {
                           {skill}
                         </span>
                       )) : (
-                        <span className="rounded-full bg-[#1e2d4a] px-2 py-0.5 font-dm text-[11px] text-[#8899bb]">General</span>
+                        <span className="rounded-full bg-ibf-primary-light px-2 py-0.5 font-dm text-[11px] text-[#8899bb]">General</span>
                       )}
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between border-t border-[#1e2d4a] p-[10px] px-3">
-                    <span className="font-dm text-xs text-[#4a5a7a]">{openRoles.length} open roles</span>
+                    <span className="font-dm text-xs text-ibf-muted">{openRoles.length} open roles</span>
                     <button
                       onClick={() => handleApplyClick(project)}
-                      className="rounded-md border border-[#1D9E75] bg-[#0d3a28] px-3.5 py-1 font-dm text-xs font-semibold text-[#1D9E75] transition-colors hover:bg-[#1D9E75] hover:text-black"
+                      className="rounded-md border border-[#1D9E75] bg-[#0d3a28] px-3.5 py-1 font-dm text-xs font-semibold text-ibf-secondary transition-colors hover:bg-[#1D9E75] hover:text-black"
                       aria-label={`Apply to ${project.title}`}
                     >
                       Apply →
@@ -302,10 +302,10 @@ export default function DiscoverPage() {
 
       {/* SHADCN-STYLE DIALOG (Custom Built for specific styles) */}
       {showDialog && selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-xl border border-[#1e2d4a] bg-[#111827] shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ibf-bg/60 p-4 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-xl border border-[#1e2d4a] bg-ibf-surface shadow-2xl">
             <div className="border-b border-[#1e2d4a] p-5">
-              <h2 className="font-syne text-lg font-bold text-white">Apply to {selectedProject.title}</h2>
+              <h2 className="font-syne text-lg font-bold text-ibf-heading">Apply to {selectedProject.title}</h2>
             </div>
             
             <div className="p-5">
@@ -320,7 +320,7 @@ export default function DiscoverPage() {
                       value={role.id}
                       checked={selectedRoleId === role.id}
                       onChange={() => setSelectedRoleId(role.id)}
-                      className="mt-0.5 h-4 w-4 border-[#1e2d4a] text-[#1D9E75] focus:ring-[#1D9E75] focus:ring-offset-0"
+                      className="mt-0.5 h-4 w-4 border-[#1e2d4a] text-ibf-secondary focus:ring-[#1D9E75] focus:ring-offset-0"
                       aria-label={`Select role ${role.title}`}
                     />
                     <div>
@@ -333,14 +333,14 @@ export default function DiscoverPage() {
 
               <div className="mb-2 flex justify-between">
                 <label className="font-dm text-sm font-medium text-[#e0e8ff]">Cover Note (Optional)</label>
-                <span className="font-dm text-xs text-[#4a5a7a]">{coverNote.length}/500</span>
+                <span className="font-dm text-xs text-ibf-muted">{coverNote.length}/500</span>
               </div>
               <textarea
                 maxLength={500}
                 value={coverNote}
                 onChange={e => setCoverNote(e.target.value)}
                 placeholder="Why are you a good fit?"
-                className="min-h-[100px] w-full resize-none rounded-lg border border-[#1e2d4a] bg-[#0C0F14] p-3 font-dm text-sm text-white focus:border-[#1D9E75] focus:outline-none"
+                className="min-h-[100px] w-full resize-none rounded-lg border border-[#1e2d4a] bg-[#0C0F14] p-3 font-dm text-sm text-ibf-heading focus:border-[#1D9E75] focus:outline-none"
                 aria-label="Cover Note"
               />
             </div>
@@ -348,7 +348,7 @@ export default function DiscoverPage() {
             <div className="flex gap-3 border-t border-[#1e2d4a] bg-[#0C0F14]/50 p-5 rounded-b-xl">
               <button
                 onClick={() => setShowDialog(false)}
-                className="flex-1 rounded-lg border border-[#1e2d4a] py-2.5 font-dm text-sm font-medium text-[#e0e8ff] hover:bg-[#1e2d4a]"
+                className="flex-1 rounded-lg border border-[#1e2d4a] py-2.5 font-dm text-sm font-medium text-[#e0e8ff] hover:bg-ibf-primary-light"
                 aria-label="Cancel application"
               >
                 Cancel

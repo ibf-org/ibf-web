@@ -148,7 +148,7 @@ export default function OnboardingPage() {
           <motion.div
             key={i}
             className="absolute rounded-full h-[12px] w-[12px]"
-            style={{ backgroundColor: ['#F97316', '#0D9488', '#22C55E', '#EAB308'][i%4] }}
+            style={{ backgroundColor: ['#F97316', 'var(--ibf-secondary)', '#22C55E', '#EAB308'][i%4] }}
             initial={{ scale: 0, x: 0, y: 0 }}
             animate={{ 
               scale: [0, 1, 0],
@@ -168,12 +168,12 @@ export default function OnboardingPage() {
     : (sName.trim() && uni.trim() && year && skills.length > 0 && availability);
 
   return (
-    <div className="flex min-h-screen w-full flex-col lg:flex-row bg-[#FAFAF7] font-sans">
+    <div className="flex min-h-screen w-full flex-col lg:flex-row bg-[var(--ibf-bg)] font-['Bricolage_Grotesque',sans-serif]">
       
       {/* ━━━ LEFT PANEL ━━━ */}
-      <div className="relative flex w-full lg:w-[45%] flex-col justify-between bg-[#6B4FD8] p-8 lg:p-12 lg:sticky lg:top-0 lg:h-screen">
-        <Link href="/" className="font-sans text-[20px] font-extrabold text-white no-underline w-fit">
-          IBF<span className="text-white">.</span>
+      <div className="relative flex w-full lg:w-[45%] flex-col justify-between bg-[var(--ibf-primary)] p-8 lg:p-12 lg:sticky lg:top-0 lg:h-screen">
+        <Link href="/" className="font-['Bricolage_Grotesque',sans-serif] text-[20px] font-extrabold text-ibf-heading no-underline w-fit">
+          IBF<span className="text-ibf-heading">.</span>
         </Link>
 
         <div className="flex flex-col gap-12 my-12 lg:my-0">
@@ -186,7 +186,7 @@ export default function OnboardingPage() {
               transition={{ duration: 0.4 }}
               className="min-h-[160px]"
             >
-              <h1 className="m-0 font-serif italic text-[36px] lg:text-[48px] leading-[1.1] text-white">
+              <h1 className="m-0 font-['Instrument_Serif',serif] italic italic text-[36px] lg:text-[48px] leading-[1.1] text-ibf-heading">
                 "{leftQuote}"
               </h1>
             </motion.div>
@@ -226,8 +226,8 @@ export default function OnboardingPage() {
             {/* STEP 1: ROLE */}
             {step === 1 && (
               <motion.div key="step1" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="w-full">
-                <h2 className="m-0 mb-[8px] font-sans text-[32px] font-extrabold text-[#1A1208]">What brings you to IBF?</h2>
-                <p className="m-0 mb-[40px] font-sans text-[15px] font-light leading-[1.6] text-[#9A8E7E]">
+                <h2 className="m-0 mb-[8px] font-['Bricolage_Grotesque',sans-serif] text-[32px] font-extrabold text-ibf-heading">What brings you to IBF?</h2>
+                <p className="m-0 mb-[40px] font-['Bricolage_Grotesque',sans-serif] text-[15px] font-light leading-[1.6] text-ibf-muted">
                   This shapes your entire experience. You can always explore both sides later.
                 </p>
 
@@ -238,19 +238,19 @@ export default function OnboardingPage() {
                     onClick={() => setRole('founder')}
                     className={`cursor-pointer rounded-[20px] border-[2px] p-[24px] transition-all
                       ${role === 'founder' 
-                          ? 'border-[#6B4FD8] bg-[#EDE8FF] shadow-[0_0_0_4px_rgba(107,79,216,0.12)]' 
-                          : 'border-[#E8E5DE] bg-white hover:border-[#6B4FD8] hover:bg-[#FAFAF7]'
+                          ? 'border-[var(--ibf-primary)] bg-[var(--ibf-primary-light)] shadow-[0_0_0_4px_rgba(107,79,216,0.12)]' 
+                          : 'border-[var(--ibf-border)] bg-white hover:border-[var(--ibf-primary)] hover:bg-[var(--ibf-bg)]'
                         }
                     `}
                   >
-                    <div className="mb-[20px] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#EDE8FF]">
+                    <div className="mb-[20px] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[var(--ibf-primary-light)]">
                       <span className="text-[28px]">🚀</span>
                     </div>
-                    <h3 className="m-0 mb-[8px] font-sans text-[18px] font-extrabold text-[#1A1208]">I'm a founder</h3>
-                    <p className="m-0 mb-[24px] font-sans text-[14px] font-light leading-[1.5] text-[#9A8E7E] min-h-[64px]">
+                    <h3 className="m-0 mb-[8px] font-['Bricolage_Grotesque',sans-serif] text-[18px] font-extrabold text-ibf-heading">I'm a founder</h3>
+                    <p className="m-0 mb-[24px] font-['Bricolage_Grotesque',sans-serif] text-[14px] font-light leading-[1.5] text-ibf-muted min-h-[64px]">
                       I have an idea or project and need talented people to build it with me
                     </p>
-                    <div className="font-sans text-[11px] font-medium text-[#1A1208]">
+                    <div className="font-['Bricolage_Grotesque',sans-serif] text-[11px] font-medium text-ibf-heading">
                       <span className="text-[#22C55E]">·</span> Post projects <span className="text-[#22C55E]">·</span> Find talent <span className="text-[#22C55E]">·</span> Build teams
                     </div>
                   </motion.div>
@@ -261,20 +261,20 @@ export default function OnboardingPage() {
                     onClick={() => setRole('student')}
                     className={`cursor-pointer rounded-[20px] border-[2px] p-[24px] transition-all
                       ${role === 'student' 
-                          ? 'border-[#0D9488] bg-[#E0F7F5] shadow-[0_0_0_4px_rgba(13,148,136,0.12)]' 
-                          : 'border-[#E8E5DE] bg-white hover:border-[#0D9488] hover:bg-[#FAFAF7]'
+                          ? 'border-[var(--ibf-secondary)] bg-[var(--ibf-secondary-light)] shadow-[0_0_0_4px_rgba(13,148,136,0.12)]' 
+                          : 'border-[var(--ibf-border)] bg-white hover:border-[var(--ibf-secondary)] hover:bg-[var(--ibf-bg)]'
                         }
                     `}
                   >
-                    <div className="mb-[20px] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E0F7F5]">
+                    <div className="mb-[20px] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[var(--ibf-secondary-light)]">
                       <span className="text-[28px]">🎓</span>
                     </div>
-                    <h3 className="m-0 mb-[8px] font-sans text-[18px] font-extrabold text-[#1A1208]">I'm a student</h3>
-                    <p className="m-0 mb-[24px] font-sans text-[14px] font-light leading-[1.5] text-[#9A8E7E] min-h-[64px]">
+                    <h3 className="m-0 mb-[8px] font-['Bricolage_Grotesque',sans-serif] text-[18px] font-extrabold text-ibf-heading">I'm a student</h3>
+                    <p className="m-0 mb-[24px] font-['Bricolage_Grotesque',sans-serif] text-[14px] font-light leading-[1.5] text-ibf-muted min-h-[64px]">
                       I want to work on real startup projects, grow my skills, and build a portfolio that matters
                     </p>
-                    <div className="font-sans text-[11px] font-medium text-[#1A1208]">
-                      <span className="text-[#0D9488]">·</span> Find projects <span className="text-[#0D9488]">·</span> Build portfolio <span className="text-[#0D9488]">·</span> Get endorsed
+                    <div className="font-['Bricolage_Grotesque',sans-serif] text-[11px] font-medium text-ibf-heading">
+                      <span className="text-[var(--ibf-secondary)]">·</span> Find projects <span className="text-[var(--ibf-secondary)]">·</span> Build portfolio <span className="text-[var(--ibf-secondary)]">·</span> Get endorsed
                     </div>
                   </motion.div>
                 </div>
@@ -283,7 +283,7 @@ export default function OnboardingPage() {
                   <button 
                     onClick={handleNext}
                     disabled={!role}
-                    className="flex w-full items-center justify-center rounded-[12px] bg-[#6B4FD8] py-[16px] font-sans text-[16px] font-bold text-white transition-all disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-[#5B3FC8] active:scale-[0.98]"
+                    className="flex w-full items-center justify-center rounded-[12px] bg-[var(--ibf-primary)] py-[16px] font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading transition-all disabled:bg-gray-200 disabled:text-ibf-muted disabled:cursor-not-allowed hover:bg-[#5B3FC8] active:scale-[0.98]"
                   >
                     Continue &rarr;
                   </button>
@@ -294,51 +294,51 @@ export default function OnboardingPage() {
             {/* STEP 2A: FOUNDER */}
             {step === 2 && role === 'founder' && (
               <motion.div key="step2f" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="w-full">
-                <h2 className="m-0 mb-[8px] font-sans text-[32px] font-extrabold text-[#1A1208]">Tell us about what you're building.</h2>
-                <p className="m-0 mb-[40px] font-sans text-[15px] font-light leading-[1.6] text-[#9A8E7E]">
+                <h2 className="m-0 mb-[8px] font-['Bricolage_Grotesque',sans-serif] text-[32px] font-extrabold text-ibf-heading">Tell us about what you're building.</h2>
+                <p className="m-0 mb-[40px] font-['Bricolage_Grotesque',sans-serif] text-[15px] font-light leading-[1.6] text-ibf-muted">
                   Don't overthink it. Even a rough idea is enough to start finding your team.
                 </p>
 
                 <div className="flex flex-col gap-[32px]">
                   {/* Field 1 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[8px]">What's your first name?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[8px]">What's your first name?</label>
                     <input 
                       type="text" value={fName} onChange={e => setFName(e.target.value)}
                       placeholder="Rahul"
-                      className="border-b-[2px] border-[#E8E5DE] bg-transparent py-[8px] font-sans text-[20px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:border-[#6B4FD8] focus:outline-none transition-colors"
+                      className="border-b-[2px] border-[var(--ibf-border)] bg-transparent py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[20px] text-ibf-heading placeholder:text-ibf-hint focus:border-[var(--ibf-primary)] focus:outline-none transition-colors"
                     />
                   </motion.div>
 
                   {/* Field 2 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[8px]">Give your startup a name — or a working title.</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[8px]">Give your startup a name — or a working title.</label>
                     <input 
                       type="text" value={startupName} onChange={e => setStartupName(e.target.value)}
                       placeholder="Something AI, something bold, or just 'Project X' for now"
-                      className="border-b-[2px] border-[#E8E5DE] bg-transparent py-[8px] font-sans text-[20px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:border-[#6B4FD8] focus:outline-none transition-colors"
+                      className="border-b-[2px] border-[var(--ibf-border)] bg-transparent py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[20px] text-ibf-heading placeholder:text-ibf-hint focus:border-[var(--ibf-primary)] focus:outline-none transition-colors"
                     />
                   </motion.div>
 
                   {/* Field 3 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[8px]">In one sentence, what does it do?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[8px]">In one sentence, what does it do?</label>
                     <textarea 
                       value={tagline} onChange={e => setTagline(e.target.value)} rows={2}
                       placeholder="We help [who] to [do what] so they can [outcome]"
-                      className="border-b-[2px] border-[#E8E5DE] bg-transparent py-[8px] font-sans text-[20px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:border-[#6B4FD8] focus:outline-none transition-colors resize-none"
+                      className="border-b-[2px] border-[var(--ibf-border)] bg-transparent py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[20px] text-ibf-heading placeholder:text-ibf-hint focus:border-[var(--ibf-primary)] focus:outline-none transition-colors resize-none"
                     />
                   </motion.div>
 
                   {/* Field 4 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[12px]">What stage are you at?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[12px]">What stage are you at?</label>
                     <div className="grid grid-cols-2 gap-[12px]">
                       {FOUNDER_STAGES.map(s => (
                         <div 
                           key={s.id} onClick={() => setStage(s.id)}
-                          className={`cursor-pointer rounded-[12px] border-[2px] py-[16px] text-center font-sans text-[15px] font-bold transition-all
-                            ${stage === s.id ? 'border-[#6B4FD8] bg-[#EDE8FF] text-[#6B4FD8]' : 'border-[#E8E5DE] bg-white text-[#9A8E7E] hover:border-[#BDB5A8]'}
+                          className={`cursor-pointer rounded-[12px] border-[2px] py-[16px] text-center font-['Bricolage_Grotesque',sans-serif] text-[15px] font-bold transition-all
+                            ${stage === s.id ? 'border-[var(--ibf-primary)] bg-[var(--ibf-primary-light)] text-[var(--ibf-primary)]' : 'border-[var(--ibf-border)] bg-white text-ibf-muted hover:border-[var(--ibf-hint)]'}
                           `}
                         >
                           {s.label}
@@ -349,11 +349,11 @@ export default function OnboardingPage() {
 
                   {/* Field 5 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[8px]">Which city are you building from?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[8px]">Which city are you building from?</label>
                     <input 
                       type="text" value={city} onChange={e => setCity(e.target.value)}
                       placeholder="Bangalore, Mumbai, remote..."
-                      className="border-b-[2px] border-[#E8E5DE] bg-transparent py-[8px] font-sans text-[20px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:border-[#6B4FD8] focus:outline-none transition-colors"
+                      className="border-b-[2px] border-[var(--ibf-border)] bg-transparent py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[20px] text-ibf-heading placeholder:text-ibf-hint focus:border-[var(--ibf-primary)] focus:outline-none transition-colors"
                     />
                   </motion.div>
                 </div>
@@ -362,7 +362,7 @@ export default function OnboardingPage() {
                   <button 
                     onClick={handleNext}
                     disabled={!isStep2Valid || isSubmitting}
-                    className="flex w-full items-center justify-center rounded-[12px] bg-[#6B4FD8] py-[16px] font-sans text-[16px] font-bold text-white transition-all disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-[#5B3FC8] active:scale-[0.98]"
+                    className="flex w-full items-center justify-center rounded-[12px] bg-[var(--ibf-primary)] py-[16px] font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading transition-all disabled:bg-gray-200 disabled:text-ibf-muted disabled:cursor-not-allowed hover:bg-[#5B3FC8] active:scale-[0.98]"
                   >
                     {isSubmitting ? 'Saving...' : 'Finish setup \u2192'}
                   </button>
@@ -373,41 +373,41 @@ export default function OnboardingPage() {
             {/* STEP 2B: STUDENT */}
             {step === 2 && role === 'student' && (
               <motion.div key="step2s" variants={stepVariants} initial="initial" animate="animate" exit="exit" className="w-full">
-                <h2 className="m-0 mb-[8px] font-sans text-[32px] font-extrabold text-[#1A1208]">Tell us about yourself.</h2>
-                <p className="m-0 mb-[40px] font-sans text-[15px] font-light leading-[1.6] text-[#9A8E7E]">
+                <h2 className="m-0 mb-[8px] font-['Bricolage_Grotesque',sans-serif] text-[32px] font-extrabold text-ibf-heading">Tell us about yourself.</h2>
+                <p className="m-0 mb-[40px] font-['Bricolage_Grotesque',sans-serif] text-[15px] font-light leading-[1.6] text-ibf-muted">
                   Founders use this to find the right people. Make it count — but don't overthink it either.
                 </p>
 
                 <div className="flex flex-col gap-[32px]">
                   {/* Field 1 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[8px]">What's your first name?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[8px]">What's your first name?</label>
                     <input 
                       type="text" value={sName} onChange={e => setSName(e.target.value)}
                       placeholder="Priya"
-                      className="border-b-[2px] border-[#E8E5DE] bg-transparent py-[8px] font-sans text-[20px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:border-[#0D9488] focus:outline-none transition-colors"
+                      className="border-b-[2px] border-[var(--ibf-border)] bg-transparent py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[20px] text-ibf-heading placeholder:text-ibf-hint focus:border-[var(--ibf-secondary)] focus:outline-none transition-colors"
                     />
                   </motion.div>
 
                   {/* Field 2 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[8px]">Where do you study?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[8px]">Where do you study?</label>
                     <input 
                       type="text" value={uni} onChange={e => setUni(e.target.value)}
                       placeholder="BITS Pilani, IIT Bombay, Christ University..."
-                      className="border-b-[2px] border-[#E8E5DE] bg-transparent py-[8px] font-sans text-[20px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:border-[#0D9488] focus:outline-none transition-colors"
+                      className="border-b-[2px] border-[var(--ibf-border)] bg-transparent py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[20px] text-ibf-heading placeholder:text-ibf-hint focus:border-[var(--ibf-secondary)] focus:outline-none transition-colors"
                     />
                   </motion.div>
 
                   {/* Field 3 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[12px]">What year are you in?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[12px]">What year are you in?</label>
                     <div className="flex flex-wrap gap-[8px]">
                       {STUDENT_YEARS.map(y => (
                         <div 
                           key={y} onClick={() => setYear(y)}
-                          className={`cursor-pointer rounded-full border px-[16px] py-[8px] font-sans text-[14px] font-semibold transition-all
-                            ${year === y ? 'border-[#0D9488] bg-[#0D9488] text-white' : 'border-[#E8E5DE] bg-white text-[#9A8E7E] hover:border-[#BDB5A8]'}
+                          className={`cursor-pointer rounded-full border px-[16px] py-[8px] font-['Bricolage_Grotesque',sans-serif] text-[14px] font-semibold transition-all
+                            ${year === y ? 'border-[var(--ibf-secondary)] bg-[var(--ibf-secondary)] text-ibf-heading' : 'border-[var(--ibf-border)] bg-white text-ibf-muted hover:border-[var(--ibf-hint)]'}
                           `}
                         >
                           {y}
@@ -418,8 +418,8 @@ export default function OnboardingPage() {
 
                   {/* Field 4 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[12px]">
-                      What can you build? Pick your top skills. <span className="font-light text-[#9A8E7E]">(Max 6)</span>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[12px]">
+                      What can you build? Pick your top skills. <span className="font-light text-ibf-muted">(Max 6)</span>
                     </label>
                     <div className="flex flex-wrap gap-[8px] mb-[12px]">
                       {PREDEFINED_SKILLS.map(skill => {
@@ -427,8 +427,8 @@ export default function OnboardingPage() {
                         return (
                           <div 
                             key={skill} onClick={() => toggleSkill(skill)}
-                            className={`cursor-pointer rounded-[8px] border px-[12px] py-[6px] font-sans text-[13px] font-semibold transition-all
-                              ${isSelected ? 'border-[#6B4FD8] bg-[#6B4FD8] text-white shadow-sm' : 'border-[#E8E5DE] bg-white text-[#5A4E3E] hover:border-[#6B4FD8]'}
+                            className={`cursor-pointer rounded-[8px] border px-[12px] py-[6px] font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold transition-all
+                              ${isSelected ? 'border-[var(--ibf-primary)] bg-[var(--ibf-primary)] text-ibf-heading shadow-sm' : 'border-[var(--ibf-border)] bg-white text-ibf-body hover:border-[var(--ibf-primary)]'}
                             `}
                           >
                             {skill}
@@ -438,33 +438,33 @@ export default function OnboardingPage() {
                       {skills.filter(s => !PREDEFINED_SKILLS.includes(s)).map(skill => (
                         <div 
                           key={skill} onClick={() => toggleSkill(skill)}
-                          className="cursor-pointer rounded-[8px] border border-[#6B4FD8] bg-[#6B4FD8] px-[12px] py-[6px] font-sans text-[13px] font-semibold text-white shadow-sm transition-all"
+                          className="cursor-pointer rounded-[8px] border border-[var(--ibf-primary)] bg-[var(--ibf-primary)] px-[12px] py-[6px] font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading shadow-sm transition-all"
                         >
                           {skill} (custom)
                         </div>
                       ))}
                     </div>
                     <div className="flex items-center gap-[8px]">
-                      <span className="font-sans text-[13px] text-[#9A8E7E]">or type custom skill:</span>
+                      <span className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted">or type custom skill:</span>
                       <input 
                         type="text" value={customSkill} onChange={e => setCustomSkill(e.target.value)} onKeyDown={addCustomSkill}
                         placeholder="Press enter to add"
-                        className="rounded-[6px] border border-[#E8E5DE] px-[10px] py-[4px] font-sans text-[13px] focus:border-[#6B4FD8] focus:outline-none w-[160px]"
+                        className="rounded-[6px] border border-[var(--ibf-border)] px-[10px] py-[4px] font-['Bricolage_Grotesque',sans-serif] text-[13px] focus:border-[var(--ibf-primary)] focus:outline-none w-[160px]"
                       />
                     </div>
                   </motion.div>
 
                   {/* Field 5 */}
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="flex flex-col">
-                    <label className="font-sans text-[13px] font-semibold text-[#1A1208] mb-[12px]">Are you available right now?</label>
+                    <label className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-semibold text-ibf-heading mb-[12px]">Are you available right now?</label>
                     <div className="flex flex-wrap gap-[12px]">
                       {AVAILABILITY_OPTS.map(opt => (
                         <div 
                           key={opt.id} onClick={() => setAvailability(opt.id)}
-                          className={`cursor-pointer flex items-center gap-[8px] rounded-full border px-[16px] py-[10px] font-sans text-[14px] font-semibold transition-all
-                            ${availability === opt.id ? 'bg-[#FAFAF7] border-[#E8E5DE] shadow-sm' : 'border-transparent bg-transparent hover:bg-gray-50'}
+                          className={`cursor-pointer flex items-center gap-[8px] rounded-full border px-[16px] py-[10px] font-['Bricolage_Grotesque',sans-serif] text-[14px] font-semibold transition-all
+                            ${availability === opt.id ? 'bg-[var(--ibf-bg)] border-[var(--ibf-border)] shadow-sm' : 'border-transparent bg-transparent hover:bg-gray-50'}
                           `}
-                          style={availability === opt.id ? { color: opt.color, borderColor: opt.color } : { color: '#9A8E7E' }}
+                          style={availability === opt.id ? { color: opt.color, borderColor: opt.color } : { color: 'var(--ibf-muted)' }}
                         >
                           <div className="h-[8px] w-[8px] rounded-full" style={{ backgroundColor: opt.color }} />
                           {opt.id}
@@ -478,7 +478,7 @@ export default function OnboardingPage() {
                   <button 
                     onClick={handleNext}
                     disabled={!isStep2Valid || isSubmitting}
-                    className="flex w-full items-center justify-center rounded-[12px] bg-[#0D9488] py-[16px] font-sans text-[16px] font-bold text-white transition-all disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-[#0F766E] active:scale-[0.98]"
+                    className="flex w-full items-center justify-center rounded-[12px] bg-[var(--ibf-secondary)] py-[16px] font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading transition-all disabled:bg-gray-200 disabled:text-ibf-muted disabled:cursor-not-allowed hover:bg-[#0F766E] active:scale-[0.98]"
                   >
                     {isSubmitting ? 'Saving...' : 'Finish setup \u2192'}
                   </button>
@@ -494,11 +494,11 @@ export default function OnboardingPage() {
                   <CheckCircleIcon />
                 </div>
 
-                <h2 className="m-0 mb-[16px] font-serif italic text-[40px] text-[#1A1208]">
+                <h2 className="m-0 mb-[16px] font-['Instrument_Serif',serif] italic italic text-[40px] text-ibf-heading">
                   Welcome to IBF, {role === 'founder' ? fName : sName || 'Builder'}.
                 </h2>
                 
-                <p className="m-0 mb-[48px] max-w-[400px] font-sans text-[16px] font-light leading-[1.6] text-[#9A8E7E]">
+                <p className="m-0 mb-[48px] max-w-[400px] font-['Bricolage_Grotesque',sans-serif] text-[16px] font-light leading-[1.6] text-ibf-muted">
                   {role === 'founder' 
                     ? "Your founder space is ready. Post your first project and start finding your team."
                     : "Your student space is ready. Discover hundreds of live projects and apply today."
@@ -507,8 +507,8 @@ export default function OnboardingPage() {
 
                 <button
                   onClick={() => router.push(role === 'founder' ? '/founder/startup' : '/student/discover')}
-                  className={`flex w-full items-center justify-center rounded-[12px] py-[16px] font-sans text-[16px] font-bold text-white transition-all active:scale-[0.98]
-                    ${role === 'founder' ? 'bg-[#6B4FD8] hover:bg-[#5B3FC8]' : 'bg-[#0D9488] hover:bg-[#0F766E]'}
+                  className={`flex w-full items-center justify-center rounded-[12px] py-[16px] font-['Bricolage_Grotesque',sans-serif] text-[16px] font-bold text-ibf-heading transition-all active:scale-[0.98]
+                    ${role === 'founder' ? 'bg-[var(--ibf-primary)] hover:bg-[#5B3FC8]' : 'bg-[var(--ibf-secondary)] hover:bg-[#0F766E]'}
                   `}
                 >
                   {role === 'founder' ? 'Set up my first project →' : 'Explore projects →'}
@@ -516,7 +516,7 @@ export default function OnboardingPage() {
 
                 <button
                   onClick={() => router.push(role === 'founder' ? '/founder/dashboard' : '/student/dashboard')}
-                  className="mt-[24px] font-sans text-[14px] font-medium text-[#9A8E7E] hover:text-[#1A1208] transition-colors"
+                  className="mt-[24px] font-['Bricolage_Grotesque',sans-serif] text-[14px] font-medium text-ibf-muted hover:text-ibf-heading transition-colors"
                 >
                   Take me to my dashboard
                 </button>

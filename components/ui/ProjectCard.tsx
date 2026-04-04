@@ -30,9 +30,9 @@ export default function ProjectCard({
     <Link href={link} className="no-underline">
       <div className="card overflow-hidden p-0 cursor-pointer group transition-colors">
         {/* Cover image */}
-        <div className="relative h-[140px] overflow-hidden bg-ibf-surface-2 card-interactive">
+        <div className="relative h-[140px] overflow-hidden bg-ibf-surface card-interactive">
           {coverImageUrl ? (
-            <Image src={coverImageUrl} alt={title} fill className="object-cover hover-zoom-img" />
+            <Image src={coverImageUrl} alt={title} fill className="object-cover hover-zoom-img" placeholder="blur" blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB2aWV3Qm94PSIwIDAgMSAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNGNEYxRUEiLz48L3N2Zz4=" />
           ) : (
             <div className="flex h-full w-full items-center justify-center hover-zoom-img transition-transform">
               <span className="text-5xl opacity-80">
@@ -42,7 +42,7 @@ export default function ProjectCard({
           )}
           {/* Status badge */}
           {status && (
-            <div className={`absolute right-3 top-3 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white shadow-sm ${
+            <div className={`absolute right-3 top-3 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-ibf-heading shadow-sm ${
               status === 'open' ? 'bg-ibf-success' : status === 'paused' ? 'bg-amber-500' : 'bg-gray-500'
             }`}>
               {status}
@@ -58,7 +58,7 @@ export default function ProjectCard({
             <span className="badge badge-student">{stage}</span>
           </div>
 
-          <h3 className="m-0 mb-1.5 font-sans text-[18px] font-bold leading-snug text-ibf-heading">{title}</h3>
+          <h3 className="m-0 mb-1.5 font-['Bricolage_Grotesque',sans-serif] text-[18px] font-bold leading-snug text-ibf-heading">{title}</h3>
           <p className="m-0 mb-4 line-clamp-2 text-[14px] leading-relaxed text-ibf-body">{tagline}</p>
 
           {/* Skills */}

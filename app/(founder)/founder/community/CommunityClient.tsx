@@ -44,10 +44,10 @@ function formatTime(iso: string) {
 
 function AvatarBubble({ name, role }: { name: string; role: string }) {
   const bg =
-    role === 'founder' ? 'bg-[#6B4FD8]' :
-    role === 'system'  ? 'bg-[#F59E0B]' : 'bg-[#0D9488]'
+    role === 'founder' ? 'bg-[var(--ibf-primary)]' :
+    role === 'system'  ? 'bg-[#F59E0B]' : 'bg-[var(--ibf-secondary)]'
   return (
-    <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${bg} font-sans text-[11px] font-bold text-white select-none`}>
+    <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${bg} font-['Bricolage_Grotesque',sans-serif] text-[11px] font-bold text-ibf-heading select-none`}>
       {role === 'system' ? '⚡' : getInitials(name)}
     </div>
   )
@@ -55,10 +55,10 @@ function AvatarBubble({ name, role }: { name: string; role: string }) {
 
 function RoleBadge({ role }: { role: string }) {
   const styles =
-    role === 'founder' ? 'bg-[#EDE8FF] text-[#6B4FD8]' :
+    role === 'founder' ? 'bg-[var(--ibf-primary-light)] text-[var(--ibf-primary)]' :
     role === 'system'  ? 'bg-[#FEF3C7] text-[#B45309]' : 'bg-[#CCFBF1] text-[#0F766E]'
   return (
-    <span className={`font-sans text-[10px] font-semibold uppercase tracking-wide rounded px-1.5 py-0.5 ${styles}`}>
+    <span className={`font-['Bricolage_Grotesque',sans-serif] text-[10px] font-semibold uppercase tracking-wide rounded px-1.5 py-0.5 ${styles}`}>
       {role}
     </span>
   )
@@ -176,14 +176,14 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
   const currentChannel = CHANNELS.find(c => c.id === activeChannel)
 
   return (
-    <div className="flex h-[calc(100vh-64px-80px)] min-h-[500px] overflow-hidden rounded-2xl border border-[#E8E5DE] bg-white shadow-sm">
+    <div className="flex h-[calc(100vh-64px-80px)] min-h-[500px] overflow-hidden rounded-2xl border border-[var(--ibf-border)] bg-white shadow-sm">
 
       {/* ── Channel Sidebar ── */}
-      <div className="relative w-[220px] flex-shrink-0 border-r border-[#E8E5DE] bg-[#FAFAF7]">
-        <div className="border-b border-[#E8E5DE] p-4">
+      <div className="relative w-[220px] flex-shrink-0 border-r border-[var(--ibf-border)] bg-[var(--ibf-bg)]">
+        <div className="border-b border-[var(--ibf-border)] p-4">
           <div className="flex items-center justify-between">
-            <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-[#9A8E7E]">Channels</p>
-            <div className={`flex items-center gap-1.5 rounded-full px-2 py-0.5 font-sans text-[10px] font-bold ${connected ? 'bg-[#DCFCE7] text-[#16A34A]' : 'bg-[#FEF2F2] text-[#DC2626]'}`}>
+            <p className="font-['Bricolage_Grotesque',sans-serif] text-[11px] font-bold uppercase tracking-widest text-ibf-muted">Channels</p>
+            <div className={`flex items-center gap-1.5 rounded-full px-2 py-0.5 font-['Bricolage_Grotesque',sans-serif] text-[10px] font-bold ${connected ? 'bg-[var(--ibf-success-bg)] text-[#16A34A]' : 'bg-[#FEF2F2] text-[#DC2626]'}`}>
               {connected ? <Wifi size={9} /> : <WifiOff size={9} />}
               {connected ? 'Live' : 'Connecting...'}
             </div>
@@ -195,18 +195,18 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
             <button
               key={ch.id}
               onClick={() => setActiveChannel(ch.id)}
-              className={`mb-1 flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left transition-all font-sans text-[13px] ${
+              className={`mb-1 flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left transition-all font-['Bricolage_Grotesque',sans-serif] text-[13px] ${
                 activeChannel === ch.id
-                  ? 'bg-[#EDE8FF] font-semibold text-[#5B21B6]'
-                  : 'text-[#6B6054] hover:bg-[#F0EDE8] hover:text-[#1A1208]'
+                  ? 'bg-[var(--ibf-primary-light)] font-semibold text-[#5B21B6]'
+                  : 'text-[#6B6054] hover:bg-[#F0EDE8] hover:text-ibf-heading'
               }`}
             >
-              <span className={activeChannel === ch.id ? 'text-[#6B4FD8]' : 'text-[#9A8E7E]'}>
+              <span className={activeChannel === ch.id ? 'text-[var(--ibf-primary)]' : 'text-ibf-muted'}>
                 {ch.icon}
               </span>
               <span className="flex-1 truncate">{ch.name}</span>
               {messagesByChannel[ch.id] && (
-                <span className={`font-sans text-[10px] font-bold ${activeChannel === ch.id ? 'text-[#6B4FD8]' : 'text-[#BDB5A8]'}`}>
+                <span className={`font-['Bricolage_Grotesque',sans-serif] text-[10px] font-bold ${activeChannel === ch.id ? 'text-[var(--ibf-primary)]' : 'text-ibf-hint'}`}>
                   {messagesByChannel[ch.id].length}
                 </span>
               )}
@@ -215,14 +215,14 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
         </nav>
 
         {/* Current user pill at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-[#E8E5DE] bg-[#FAFAF7] p-3">
-          <div className="flex items-center gap-2 rounded-xl bg-[#EDE8FF] px-3 py-2">
+        <div className="absolute bottom-0 left-0 right-0 border-t border-[var(--ibf-border)] bg-[var(--ibf-bg)] p-3">
+          <div className="flex items-center gap-2 rounded-xl bg-[var(--ibf-primary-light)] px-3 py-2">
             <AvatarBubble name={user?.fullName || 'You'} role={userRole} />
             <div className="min-w-0 flex-1">
-              <p className="truncate font-sans text-[12px] font-semibold text-[#5B21B6]">
+              <p className="truncate font-['Bricolage_Grotesque',sans-serif] text-[12px] font-semibold text-[#5B21B6]">
                 {user?.fullName || user?.username || 'You'}
               </p>
-              <p className="font-sans text-[10px] capitalize text-[#7C3AED]">{userRole}</p>
+              <p className="font-['Bricolage_Grotesque',sans-serif] text-[10px] capitalize text-[#7C3AED]">{userRole}</p>
             </div>
           </div>
         </div>
@@ -232,15 +232,15 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
       <div className="flex flex-1 flex-col overflow-hidden">
 
         {/* Channel Header */}
-        <div className="flex-shrink-0 flex items-center gap-3 border-b border-[#E8E5DE] px-6 py-4">
-          <span className="text-[#6B4FD8]">{currentChannel?.icon}</span>
+        <div className="flex-shrink-0 flex items-center gap-3 border-b border-[var(--ibf-border)] px-6 py-4">
+          <span className="text-[var(--ibf-primary)]">{currentChannel?.icon}</span>
           <div>
-            <h2 className="font-sans text-[15px] font-bold text-[#1A1208]">#{currentChannel?.name}</h2>
-            <p className="font-sans text-[12px] text-[#9A8E7E]">{currentChannel?.description}</p>
+            <h2 className="font-['Bricolage_Grotesque',sans-serif] text-[15px] font-bold text-ibf-heading">#{currentChannel?.name}</h2>
+            <p className="font-['Bricolage_Grotesque',sans-serif] text-[12px] text-ibf-muted">{currentChannel?.description}</p>
           </div>
-          <div className="ml-auto flex items-center gap-2 rounded-full border border-[#E8E5DE] bg-[#FAFAF7] px-3 py-1.5">
-            <Users size={12} className="text-[#9A8E7E]" />
-            <span className="font-sans text-[11px] font-semibold text-[#9A8E7E]">{messages.length} messages</span>
+          <div className="ml-auto flex items-center gap-2 rounded-full border border-[var(--ibf-border)] bg-[var(--ibf-bg)] px-3 py-1.5">
+            <Users size={12} className="text-ibf-muted" />
+            <span className="font-['Bricolage_Grotesque',sans-serif] text-[11px] font-semibold text-ibf-muted">{messages.length} messages</span>
           </div>
         </div>
 
@@ -249,17 +249,17 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
           {loading ? (
             <div className="flex h-full items-center justify-center">
               <div className="flex flex-col items-center gap-3">
-                <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-[#E8E5DE] border-t-[#6B4FD8]" />
-                <p className="font-sans text-[13px] text-[#9A8E7E]">Loading messages...</p>
+                <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-[var(--ibf-border)] border-t-[var(--ibf-primary)]" />
+                <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted">Loading messages...</p>
               </div>
             </div>
           ) : messages.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#EDE8FF]">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--ibf-primary-light)]">
                 <span className="text-[28px]">💬</span>
               </div>
-              <p className="font-sans text-[15px] font-semibold text-[#1A1208]">No messages yet</p>
-              <p className="font-sans text-[13px] text-[#9A8E7E]">Be the first to say something in #{currentChannel?.name}!</p>
+              <p className="font-['Bricolage_Grotesque',sans-serif] text-[15px] font-semibold text-ibf-heading">No messages yet</p>
+              <p className="font-['Bricolage_Grotesque',sans-serif] text-[13px] text-ibf-muted">Be the first to say something in #{currentChannel?.name}!</p>
             </div>
           ) : (
             <div className="space-y-5">
@@ -275,16 +275,16 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
                     <AvatarBubble name={msg.author_name} role={msg.author_role} />
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-baseline gap-2 mb-1">
-                        <span className={`font-sans text-[13px] font-bold ${
+                        <span className={`font-['Bricolage_Grotesque',sans-serif] text-[13px] font-bold ${
                           msg.author_role === 'founder' ? 'text-[#5B21B6]' :
                           msg.author_role === 'system'  ? 'text-[#B45309]' : 'text-[#0F766E]'
                         }`}>
                           {msg.author_name}
                         </span>
                         <RoleBadge role={msg.author_role} />
-                        <span className="font-sans text-[11px] text-[#BDB5A8]">{formatTime(msg.created_at)}</span>
+                        <span className="font-['Bricolage_Grotesque',sans-serif] text-[11px] text-ibf-hint">{formatTime(msg.created_at)}</span>
                       </div>
-                      <p className="font-sans text-[14px] leading-relaxed text-[#3D3429] break-words">{msg.content}</p>
+                      <p className="font-['Bricolage_Grotesque',sans-serif] text-[14px] leading-relaxed text-[#3D3429] break-words">{msg.content}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -295,9 +295,9 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
         </div>
 
         {/* Message Input */}
-        <div className="flex-shrink-0 border-t border-[#E8E5DE] bg-white p-4">
-          <div className={`flex items-center gap-3 rounded-xl border bg-[#FAFAF7] px-4 py-3 transition-all ${connected ? 'border-[#E8E5DE] focus-within:border-[#C4B5FD] focus-within:ring-2 focus-within:ring-[#EDE8FF]' : 'border-[#FCA5A5] opacity-70'}`}>
-            <button aria-label="Attach file" className="text-[#9A8E7E] hover:text-[#1A1208] transition-colors flex-shrink-0">
+        <div className="flex-shrink-0 border-t border-[var(--ibf-border)] bg-white p-4">
+          <div className={`flex items-center gap-3 rounded-xl border bg-[var(--ibf-bg)] px-4 py-3 transition-all ${connected ? 'border-[var(--ibf-border)] focus-within:border-[#C4B5FD] focus-within:ring-2 focus-within:ring-[var(--ibf-primary-light)]' : 'border-[#FCA5A5] opacity-70'}`}>
+            <button aria-label="Attach file" className="text-ibf-muted hover:text-ibf-heading transition-colors flex-shrink-0">
               <Paperclip size={16} />
             </button>
             <input
@@ -307,16 +307,16 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
               onKeyDown={handleKeyDown}
               placeholder={connected ? `Message #${currentChannel?.name}` : 'Connecting to live chat...'}
               disabled={!connected || sending}
-              className="flex-1 bg-transparent font-sans text-[14px] text-[#1A1208] placeholder:text-[#BDB5A8] focus:outline-none disabled:opacity-50"
+              className="flex-1 bg-transparent font-['Bricolage_Grotesque',sans-serif] text-[14px] text-ibf-heading placeholder:text-ibf-hint focus:outline-none disabled:opacity-50"
             />
-            <button aria-label="Emoji" className="text-[#9A8E7E] hover:text-[#1A1208] transition-colors flex-shrink-0">
+            <button aria-label="Emoji" className="text-ibf-muted hover:text-ibf-heading transition-colors flex-shrink-0">
               <Smile size={16} />
             </button>
             <button
               onClick={handleSend}
               disabled={!input.trim() || !connected || sending}
               aria-label="Send message"
-              className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#6B4FD8] text-white transition-all hover:bg-[#5B21B6] disabled:bg-[#E8E5DE] disabled:text-[#BDB5A8] active:scale-95"
+              className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[var(--ibf-primary)] text-ibf-heading transition-all hover:bg-[#5B21B6] disabled:bg-[var(--ibf-border)] disabled:text-ibf-hint active:scale-95"
             >
               {sending ? (
                 <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
@@ -325,8 +325,8 @@ export default function RealtimeCommunityClient({ userRole = 'student' }: { user
               )}
             </button>
           </div>
-          <p className="mt-2 text-center font-sans text-[11px] text-[#BDB5A8]">
-            <kbd className="rounded border border-[#E8E5DE] px-1 font-mono text-[10px]">Enter</kbd> to send · Real-time chat powered by Supabase
+          <p className="mt-2 text-center font-['Bricolage_Grotesque',sans-serif] text-[11px] text-ibf-hint">
+            <kbd className="rounded border border-[var(--ibf-border)] px-1 font-mono text-[10px]">Enter</kbd> to send · Real-time chat powered by Supabase
           </p>
         </div>
       </div>

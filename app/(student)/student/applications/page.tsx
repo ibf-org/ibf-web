@@ -21,7 +21,7 @@ export default async function StudentApplicationsPage() {
 
   if (!userData) {
     // Edge case if user not in DB yet
-    return <div className="p-8 text-white">Profile incomplete.</div>
+    return <div className="p-8 text-ibf-heading">Profile incomplete.</div>
   }
 
   // 2. Fetch applications with joined data
@@ -51,20 +51,20 @@ export default async function StudentApplicationsPage() {
         {/* STATS ROW */}
         <div className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4">
           <div className="card text-center p-4">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Total</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-ibf-hint">Total</h3>
             <p className="mt-2 text-3xl font-bold">{totalApplied}</p>
           </div>
           <div className="card text-center p-4">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Pending</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-ibf-hint">Pending</h3>
             <p className="mt-2 text-3xl font-bold">{pendingCount}</p>
           </div>
           <div className="card text-center p-4 border-emerald-200 bg-emerald-50">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Accepted</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-ibf-hint">Accepted</h3>
             <p className="mt-2 text-3xl font-bold text-emerald-700">{acceptedCount}</p>
           </div>
           <div className="card text-center p-4 opacity-70">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Rejected</h3>
-            <p className="mt-2 text-3xl font-bold text-gray-500">{rejectedCount}</p>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-ibf-hint">Rejected</h3>
+            <p className="mt-2 text-3xl font-bold text-ibf-hint">{rejectedCount}</p>
           </div>
         </div>
 

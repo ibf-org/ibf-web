@@ -28,7 +28,7 @@ export default function StudentLayoutClient({ children, username, profileComplet
 
   return (
     <NotificationsProvider>
-      <div className="flex min-h-screen bg-ibf-bg font-sans">
+      <div className="flex min-h-screen bg-ibf-bg font-['Bricolage_Grotesque',sans-serif]">
         {/* Mobile Sidebar Overlay */}
         {sidebarOpen && (
           <div 
@@ -41,9 +41,9 @@ export default function StudentLayoutClient({ children, username, profileComplet
         <aside className={`fixed inset-y-0 left-0 z-50 flex w-[260px] flex-col border-r border-ibf-border bg-white transition-transform duration-300 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}>
-          <div className="flex flex-col border-b border-ibf-border px-4 py-5 font-sans">
+          <div className="flex flex-col border-b border-ibf-border px-4 py-5 font-['Bricolage_Grotesque',sans-serif]">
             <div className="flex items-center justify-between">
-              <Link href="/student/dashboard" className="flex items-center gap-1 font-sans text-[18px] font-extrabold text-ibf-heading tracking-tight">
+              <Link href="/student/dashboard" className="flex items-center gap-1 font-['Bricolage_Grotesque',sans-serif] text-[18px] font-extrabold text-ibf-heading tracking-tight">
                 IBF<span className="h-1.5 w-1.5 rounded-full bg-ibf-secondary"></span>
               </Link>
               <button title="Close sidebar" className="text-ibf-muted lg:hidden" onClick={() => setSidebarOpen(false)}>
@@ -67,7 +67,7 @@ export default function StudentLayoutClient({ children, username, profileComplet
                   key={item.href}
                   href={item.href}
                   onClick={() => setSidebarOpen(false)}
-                  className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-sans text-[14px] transition-all duration-150 ${
+                  className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-['Bricolage_Grotesque',sans-serif] text-[14px] transition-all duration-150 ${
                     isActive 
                       ? 'bg-ibf-secondary-light font-bold text-ibf-secondary' 
                       : 'text-ibf-muted hover:bg-ibf-surface hover:text-ibf-body'
@@ -88,8 +88,8 @@ export default function StudentLayoutClient({ children, username, profileComplet
                 />
                 {isLoaded && user && (
                   <div className="flex flex-col">
-                    <span className="font-sans text-[13px] font-bold text-ibf-heading">{user.fullName || "Student"}</span>
-                    <span className="font-sans text-[11px] text-ibf-muted font-medium">Student</span>
+                    <span className="font-['Bricolage_Grotesque',sans-serif] text-[13px] font-bold text-ibf-heading">{user.fullName || "Student"}</span>
+                    <span className="font-['Bricolage_Grotesque',sans-serif] text-[11px] text-ibf-muted font-medium">Student</span>
                   </div>
                 )}
               </div>
@@ -105,7 +105,7 @@ export default function StudentLayoutClient({ children, username, profileComplet
         <div className="flex flex-1 flex-col lg:pl-[260px] min-w-0 transition-all duration-300">
           {/* Mobile Topbar */}
           <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center justify-between border-b border-ibf-border bg-white/90 px-4 backdrop-blur-md lg:hidden">
-            <Link href="/student/dashboard" className="flex items-center gap-1 font-sans text-[18px] font-extrabold text-ibf-heading">
+            <Link href="/student/dashboard" className="flex items-center gap-1 font-['Bricolage_Grotesque',sans-serif] text-[18px] font-extrabold text-ibf-heading">
               IBF<span className="h-1.5 w-1.5 rounded-full bg-ibf-secondary"></span>
             </Link>
             <button title="Open sidebar" className="text-ibf-heading" onClick={() => setSidebarOpen(true)}>

@@ -19,8 +19,8 @@ const FAQS = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-[#070711] font-sans">
-      <nav className="flex items-center justify-between border-b border-[#1e1e3a] px-10 py-4">
+    <div className="min-h-screen bg-ibf-bg font-['Bricolage_Grotesque',sans-serif]">
+      <nav className="flex items-center justify-between border-b border-ibf-border px-10 py-4">
         <Link href="/" className="flex items-center gap-2 no-underline">
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-violet-600 to-cyan-500 text-sm">⚡</div>
           <span className="bg-gradient-to-br from-violet-600 to-cyan-500 bg-clip-text font-display text-lg font-bold text-transparent">IBF</span>
@@ -32,24 +32,24 @@ export default function FAQPage() {
         <h1 className="mb-2 font-display text-4xl font-extrabold text-[#f0f0ff]">
           Frequently Asked Questions
         </h1>
-        <p className="mb-12 text-base text-gray-500">Everything you need to know about IBF.</p>
+        <p className="mb-12 text-base text-ibf-hint">Everything you need to know about IBF.</p>
 
         <div className="flex flex-col gap-4">
           {FAQS.map((faq, i) => (
-            <div key={i} className="rounded-xl border border-[#1e1e3a] bg-[#0d0d1a] px-6 py-5">
+            <div key={i} className="rounded-xl border border-ibf-border bg-[#0d0d1a] px-6 py-5">
               <h3 className="mb-2 flex items-start gap-2 font-display text-base font-bold text-[#f0f0ff]">
                 <span className="shrink-0 text-violet-600">Q.</span> {faq.q}
               </h3>
-              <p className="m-0 pl-[22px] text-sm leading-relaxed text-gray-400">
+              <p className="m-0 pl-[22px] text-sm leading-relaxed text-ibf-muted">
                 {faq.a}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl border border-[#1e1e3a] bg-[#0d0d1a] p-8 text-center">
+        <div className="mt-12 rounded-2xl border border-ibf-border bg-[#0d0d1a] p-8 text-center">
           <h2 className="mb-2 font-display text-2xl font-bold text-[#f0f0ff]">Still have questions?</h2>
-          <p className="mb-5 text-sm text-gray-500">Join the platform and ask in the community chat — we respond fast.</p>
+          <p className="mb-5 text-sm text-ibf-hint">Join the platform and ask in the community chat — we respond fast.</p>
           <Link href="/sign-up" className="btn-primary px-7 py-3 text-base">
             Join IBF Free
           </Link>

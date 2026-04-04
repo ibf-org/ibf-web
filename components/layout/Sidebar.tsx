@@ -54,7 +54,7 @@ export default function Sidebar({ role }: SidebarProps) {
         })}
       </div>
 
-      <div className="mt-auto border-t border-[#1e1e3a] pt-4">
+      <div className="mt-auto border-t border-ibf-border pt-4">
         <Link href="/settings" className="sidebar-link">
           <Settings size={16} />
           Settings

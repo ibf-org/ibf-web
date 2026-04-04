@@ -9,6 +9,7 @@ import {
   useCallback,
 } from 'react'
 import { StreamChat } from 'stream-chat'
+import { useAuth } from '@clerk/nextjs'
 
 // ─── Context ─────────────────────────────────────────────────────────────────
 
@@ -33,6 +34,7 @@ const StreamChatContext = createContext<StreamChatContextType>({
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
 export function StreamChatProvider({ children }: { children: React.ReactNode }) {
+  const { isLoaded, userId: clerkUserId } = useAuth()
   const [client, setClient] = useState<StreamChat | null>(null)
   const [isConnected, setIsConnected] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -45,8 +47,12 @@ export function StreamChatProvider({ children }: { children: React.ReactNode }) 
   const unmounted = useRef(false)
 
   const connect = useCallback(async () => {
-    // Skip if already connected
+    // Skip if already connected or not authenticated
     if (clientRef.current?.userID) return
+    if (!isLoaded || !clerkUserId) {
+      if (!unmounted.current) setIsLoading(false)
+      return
+    }
 
     try {
       if (!unmounted.current) {
@@ -114,12 +120,26 @@ export function StreamChatProvider({ children }: { children: React.ReactNode }) 
     } finally {
       if (!unmounted.current) setIsLoading(false)
     }
-  }, []) // stable reference — no deps
+  }, [isLoaded, clerkUserId])
 
-  // ── Mount / Unmount ──
+  // ── Sync with Auth \/ Mount \/ Unmount ──
   useEffect(() => {
     unmounted.current = false
-    connect()
+    
+    if (isLoaded && clerkUserId) {
+      connect()
+    } else if (isLoaded && !clerkUserId) {
+      if (!unmounted.current) setIsLoading(false)
+      if (clientRef.current?.userID) {
+        clientRef.current.disconnectUser().catch(console.error)
+        clientRef.current = null
+        if (!unmounted.current) {
+          setClient(null)
+          setCurrentUserId(null)
+          setIsConnected(false)
+        }
+      }
+    }
 
     return () => {
       unmounted.current = true
@@ -129,7 +149,7 @@ export function StreamChatProvider({ children }: { children: React.ReactNode }) 
       }
       // Don't call setClient etc — component is unmounting
     }
-  }, [connect])
+  }, [connect, isLoaded, clerkUserId])
 
   // ── Tab visibility — reconnect if tab was hidden and WS dropped ──
   useEffect(() => {

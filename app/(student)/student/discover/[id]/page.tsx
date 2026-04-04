@@ -41,7 +41,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="max-w-[860px]">
-      <Link href="/student/discover" className="mb-5 inline-flex items-center gap-1.5 text-sm text-gray-500 no-underline hover:text-gray-400">
+      <Link href="/student/discover" className="mb-5 inline-flex items-center gap-1.5 text-sm text-ibf-hint no-underline hover:text-ibf-muted">
         <ArrowLeft size={16} /> Back to Discover
       </Link>
 
@@ -58,15 +58,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="mb-2.5 flex gap-2">
             <span className="badge badge-violet">{project.category}</span>
             <span className="badge badge-cyan">{project.stage}</span>
-            <span className={`badge ${project.status === 'open' ? 'border-emerald-500/30 bg-emerald-500/15 text-emerald-400' : 'border-gray-500/30 bg-gray-500/15 text-gray-400'}`}>
+            <span className={`badge ${project.status === 'open' ? 'border-emerald-500/30 bg-emerald-500/15 text-emerald-400' : 'border-gray-500/30 bg-gray-500/15 text-ibf-muted'}`}>
               {project.status}
             </span>
           </div>
           <h1 className="m-0 mb-2 font-display text-[28px] font-bold text-[#f0f0ff]">{project.title}</h1>
-          <p className="m-0 text-base text-gray-400">{project.tagline}</p>
+          <p className="m-0 text-base text-ibf-muted">{project.tagline}</p>
         </div>
         <div className="flex shrink-0 items-center gap-3">
-          <div className="flex items-center gap-1.5 text-[13px] text-gray-500">
+          <div className="flex items-center gap-1.5 text-[13px] text-ibf-hint">
             <Users size={14} />
             {(teamMembers?.length || 0) + 1} member{(teamMembers?.length || 0) + 1 !== 1 ? 's' : ''}
           </div>
@@ -84,7 +84,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* Description */}
           <div className="card mb-5">
             <h2 className="m-0 mb-4 font-display text-[17px] font-bold text-[#f0f0ff]">About this Project</h2>
-            <div className="whitespace-pre-wrap text-sm leading-relaxed text-gray-400">{project.description}</div>
+            <div className="whitespace-pre-wrap text-sm leading-relaxed text-ibf-muted">{project.description}</div>
           </div>
 
           {/* Open Roles */}
@@ -92,7 +92,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             Open Roles ({openRoles.length})
           </h2>
           {openRoles.length === 0 ? (
-            <div className="card p-8 text-center text-gray-500">No open roles right now</div>
+            <div className="card p-8 text-center text-ibf-hint">No open roles right now</div>
           ) : (
             <div className="flex flex-col gap-3">
               {openRoles.map((role: { id: string; title: string; description: string; skills_required: string[]; commitment_type: string; compensation_type: string; num_openings: number }) => {
@@ -102,14 +102,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1">
                         <h3 className="m-0 mb-1.5 font-display text-base font-bold text-[#f0f0ff]">{role.title}</h3>
-                        <p className="m-0 mb-2.5 text-[13px] leading-relaxed text-gray-400">{role.description}</p>
+                        <p className="m-0 mb-2.5 text-[13px] leading-relaxed text-ibf-muted">{role.description}</p>
                         <div className="mb-2.5 flex flex-wrap gap-1.5">
                           {role.skills_required.map((s: string) => <span key={s} className="skill-tag">{s}</span>)}
                         </div>
                         <div className="flex flex-wrap gap-3">
-                          <span className="flex items-center gap-1 text-xs text-gray-500"><Clock size={12} />{role.commitment_type}</span>
-                          <span className="flex items-center gap-1 text-xs text-gray-500"><DollarSign size={12} />{role.compensation_type}</span>
-                          <span className="flex items-center gap-1 text-xs text-gray-500"><Briefcase size={12} />{role.num_openings} opening{role.num_openings > 1 ? 's' : ''}</span>
+                          <span className="flex items-center gap-1 text-xs text-ibf-hint"><Clock size={12} />{role.commitment_type}</span>
+                          <span className="flex items-center gap-1 text-xs text-ibf-hint"><DollarSign size={12} />{role.compensation_type}</span>
+                          <span className="flex items-center gap-1 text-xs text-ibf-hint"><Briefcase size={12} />{role.num_openings} opening{role.num_openings > 1 ? 's' : ''}</span>
                         </div>
                       </div>
                       {hasApplied ? (
@@ -130,18 +130,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="w-full lg:w-[300px] shrink-0">
             <div className="sticky top-5 self-start">
             <div className="card p-5">
-              <h3 className="m-0 mb-3.5 font-display text-sm font-semibold uppercase tracking-wide text-gray-500">Founder</h3>
+              <h3 className="m-0 mb-3.5 font-display text-sm font-semibold uppercase tracking-wide text-ibf-hint">Founder</h3>
               <div className="mb-3 flex items-center gap-2.5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 text-lg font-bold text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 text-lg font-bold text-ibf-heading">
                   {founder.avatar_url ? <Image src={founder.avatar_url} alt={founder.full_name} width={48} height={48} className="object-cover" /> : founder.full_name.charAt(0)}
                 </div>
                 <div>
                   <div className="text-[15px] font-bold text-[#f0f0ff]">{founder.full_name}</div>
-                  {founderProfile?.startup_name && <div className="text-xs text-gray-400">{founderProfile.startup_name}</div>}
+                  {founderProfile?.startup_name && <div className="text-xs text-ibf-muted">{founderProfile.startup_name}</div>}
                 </div>
               </div>
-              {founderProfile?.bio && <p className="m-0 mb-3.5 text-[13px] leading-relaxed text-gray-400">{founderProfile.bio}</p>}
-              {founderProfile?.startup_tagline && <p className="m-0 mb-3.5 text-xs italic text-gray-500">"{founderProfile.startup_tagline}"</p>}
+              {founderProfile?.bio && <p className="m-0 mb-3.5 text-[13px] leading-relaxed text-ibf-muted">{founderProfile.bio}</p>}
+              {founderProfile?.startup_tagline && <p className="m-0 mb-3.5 text-xs italic text-ibf-hint">"{founderProfile.startup_tagline}"</p>}
               <Link href={`/u/${founder.username}`} className="btn-secondary w-full justify-center text-[13px] min-h-[44px] active:scale-[0.97] transition-transform">
                 View Profile
               </Link>

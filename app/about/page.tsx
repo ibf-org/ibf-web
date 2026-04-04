@@ -7,8 +7,8 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#070711] font-sans">
-      <nav className="flex items-center justify-between border-b border-[#1e1e3a] px-10 py-4">
+    <div className="min-h-screen bg-ibf-bg font-['Bricolage_Grotesque',sans-serif]">
+      <nav className="flex items-center justify-between border-b border-ibf-border px-10 py-4">
         <Link href="/" className="flex items-center gap-2 no-underline">
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-violet-600 to-cyan-500 text-sm">⚡</div>
           <span className="bg-gradient-to-br from-violet-600 to-cyan-500 bg-clip-text font-display text-lg font-bold text-transparent">IBF</span>
@@ -20,7 +20,7 @@ export default function AboutPage() {
         <h1 className="mb-4 font-display text-4xl font-extrabold leading-tight text-[#f0f0ff]">
           About <span className="bg-gradient-to-br from-violet-600 to-cyan-500 bg-clip-text text-transparent">IBF</span>
         </h1>
-        <p className="mb-12 text-lg leading-relaxed text-gray-400">
+        <p className="mb-12 text-lg leading-relaxed text-ibf-muted">
           Whether you&apos;re a student looking for an exciting new challenge or a founder searching for your missing puzzle piece, 
           IBF gives you the tools to succeed.
         </p>
@@ -33,7 +33,7 @@ export default function AboutPage() {
         ].map(s => (
           <div key={s.title} className="mb-10">
             <h2 className="mb-3 font-display text-2xl font-bold text-[#f0f0ff]">{s.title}</h2>
-            <p className="m-0 text-base leading-relaxed text-gray-400">{s.body}</p>
+            <p className="m-0 text-base leading-relaxed text-ibf-muted">{s.body}</p>
           </div>
         ))}
 

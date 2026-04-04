@@ -182,7 +182,7 @@ export default function StudentProfileEditPage() {
               </div>
             </div>
           </div>
-          <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-[#1e2d4a]">
+          <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-ibf-primary-light">
             <div 
               className="h-full bg-ibf-primary transition-all duration-500 ease-in-out"
               style={{ width: `${completeness}%` }}

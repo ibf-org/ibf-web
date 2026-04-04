@@ -35,7 +35,7 @@ export default function ApplicationsClient({ initialData }: ApplicationsClientPr
 
   if (applications.length === 0) {
     return (
-      <div className="flex h-64 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#1e2d4a] bg-[#111827]/50 text-center">
+      <div className="flex h-64 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#1e2d4a] bg-ibf-surface/50 text-center">
         <h3 className="font-syne text-lg font-bold text-[#e0e8ff]">You haven't applied to any projects yet</h3>
         <p className="mt-2 font-dm text-sm text-[#8899bb]">Discover projects looking for your skills and apply to join.</p>
         <Link
@@ -50,9 +50,9 @@ export default function ApplicationsClient({ initialData }: ApplicationsClientPr
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-[#1e2d4a] bg-[#111827]">
+    <div className="overflow-x-auto rounded-xl border border-[#1e2d4a] bg-ibf-surface">
       <table className="w-full text-left font-dm text-sm">
-        <thead className="bg-[#0C0F14] border-b border-[#1e2d4a] uppercase tracking-wider text-[#4a5a7a]">
+        <thead className="bg-[#0C0F14] border-b border-[#1e2d4a] uppercase tracking-wider text-ibf-muted">
           <tr>
             <th className="px-6 py-4 text-[11px] font-medium">Project</th>
             <th className="px-6 py-4 text-[11px] font-medium">Role</th>
@@ -68,10 +68,10 @@ export default function ApplicationsClient({ initialData }: ApplicationsClientPr
             const project = app.role?.project || {}
             
             return (
-              <tr key={app.id} className="transition-colors hover:bg-[#1e2d4a]/20">
+              <tr key={app.id} className="transition-colors hover:bg-ibf-primary-light/20">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-[8px] bg-[#1e2d4a]">
+                    <div className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-[8px] bg-ibf-primary-light">
                       {project.cover_image_url ? (
                         <img src={project.cover_image_url} alt="" className="h-full w-full object-cover" />
                       ) : (
@@ -94,7 +94,7 @@ export default function ApplicationsClient({ initialData }: ApplicationsClientPr
                 
                 <td className="px-6 py-4">
                   <span className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-bold capitalize tracking-wide ${
-                    app.status === 'accepted' ? 'bg-[#0d3a28] text-[#1D9E75]' :
+                    app.status === 'accepted' ? 'bg-[#0d3a28] text-ibf-secondary' :
                     app.status === 'rejected' ? 'bg-[#2a0a0a] text-[#ef4444]' :
                     app.status === 'reviewing' ? 'bg-[#0a1628] text-[#4B9CF5]' :
                     'bg-[#1a1a2e] text-[#8899bb]'
@@ -107,7 +107,7 @@ export default function ApplicationsClient({ initialData }: ApplicationsClientPr
                   {app.status === 'pending' && (
                     <button
                       onClick={() => handleWithdraw(app.id)}
-                      className="font-dm text-xs font-medium text-[#4a5a7a] transition-colors hover:text-red-400"
+                      className="font-dm text-xs font-medium text-ibf-muted transition-colors hover:text-red-400"
                       aria-label="Withdraw application"
                     >
                       Withdraw
@@ -116,7 +116,7 @@ export default function ApplicationsClient({ initialData }: ApplicationsClientPr
                   {app.status === 'accepted' && project.id && (
                     <Link
                       href={`/student/team/${project.id}`}
-                      className="inline-flex items-center gap-1 font-dm text-xs font-bold text-[#1D9E75] transition-colors hover:text-[#15825f]"
+                      className="inline-flex items-center gap-1 font-dm text-xs font-bold text-ibf-secondary transition-colors hover:text-[#15825f]"
                       aria-label="View team workspace"
                     >
                       View team <ArrowRight size={14} />
