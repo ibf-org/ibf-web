@@ -14,7 +14,6 @@ import {
   Bell,
   Menu,
   X,
-  Zap,
   MessageSquare
 } from 'lucide-react'
 import { NotificationsProvider } from '@/components/shared/NotificationsProvider'
@@ -58,9 +57,8 @@ export default function FounderShell({ children }: { children: React.ReactNode }
     <div className="flex h-full flex-col bg-white font-['Bricolage_Grotesque',sans-serif]">
       {/* TOP SECTION */}
       <div className="flex items-center gap-3 border-b border-ibf-border px-4 py-5">
-        <Link href="/founder/dashboard" className="flex items-center gap-1 font-['Bricolage_Grotesque',sans-serif] text-[18px] font-extrabold text-ibf-heading tracking-tight no-underline">
-          <Zap size={18} className="text-ibf-primary" />
-          IBF<span className="h-1.5 w-1.5 rounded-full bg-ibf-primary"></span>
+        <Link href="/founder/dashboard" className="flex items-center font-['Bricolage_Grotesque',sans-serif] text-[20px] font-extrabold text-ibf-heading tracking-tight no-underline">
+          IBF<span className="text-[var(--ibf-primary)]">.</span>
         </Link>
         <div className="badge badge-founder ml-auto">
           Founder Space

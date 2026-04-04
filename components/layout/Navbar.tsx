@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserButton, useUser } from '@clerk/nextjs'
-import { Bell, Search, Zap } from 'lucide-react'
+import { Bell, Search } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Navbar() {
@@ -18,12 +18,9 @@ export default function Navbar() {
     <nav className="sticky top-0 z-30 flex h-[60px] items-center gap-4 border-b border-ibf-border bg-white/80 px-6 backdrop-blur-md">
       {/* Logo */}
       <Link href={navLink} className="flex shrink-0 items-center gap-2 no-underline">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500">
-          <Zap size={18} color="white" fill="white" />
+        <div className="font-['Bricolage_Grotesque',sans-serif] font-extrabold text-ibf-heading text-[20px]">
+          IBF<span className="text-[var(--ibf-primary)]">.</span>
         </div>
-        <span className="bg-gradient-to-br from-violet-600 to-cyan-500 bg-clip-text font-display text-lg font-bold text-transparent">
-          IBF
-        </span>
       </Link>
 
       {/* Search bar */}

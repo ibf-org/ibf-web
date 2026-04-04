@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserButton, useUser } from '@clerk/nextjs'
 import {
-  LayoutDashboard, FolderOpen, Inbox, Users, User, Zap, Rocket, X,
+  LayoutDashboard, FolderOpen, Inbox, Users, User, Rocket, X,
 } from 'lucide-react'
 
 const NAV_ITEMS = [
@@ -44,12 +44,9 @@ export default function FounderSidebar({ open, onClose }: Props) {
         {/* Logo + close (mobile) */}
         <div className="flex h-14 items-center justify-between px-5 border-b border-ibf-border">
           <Link href="/founder/dashboard" className="flex items-center gap-2.5 no-underline">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500">
-              <Zap size={16} color="white" fill="white" />
+            <div className="font-['Bricolage_Grotesque',sans-serif] font-extrabold text-ibf-heading text-[20px]">
+              IBF<span className="text-[var(--ibf-primary)]">.</span>
             </div>
-            <span className="bg-gradient-to-br from-violet-400 to-cyan-400 bg-clip-text font-display text-lg font-bold text-transparent">
-              IBF
-            </span>
           </Link>
 
           {/* Role badge + mobile close */}
