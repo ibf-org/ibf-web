@@ -47,7 +47,6 @@ tsc_errors*.log
 
 # dev scripts
 fix_routes.sh
-proxy.ts
 
 # gemini / AI tooling
 .gemini/
