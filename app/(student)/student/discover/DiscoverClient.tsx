@@ -63,8 +63,8 @@ export default function DiscoverClient({ studentId }: DiscoverClientProps) {
                 item: 'flex items-center gap-2 group',
                 label: 'flex items-center gap-2 cursor-pointer transition-colors w-full',
                 checkbox: 'h-[18px] w-[18px] rounded-[4px] border border-ibf-border bg-white text-ibf-secondary focus:ring-ibf-secondary/20 cursor-pointer shadow-sm',
-                labelText: 'font-['Bricolage_Grotesque',sans-serif] text-[14px] text-ibf-body group-hover:text-ibf-heading font-medium',
-                count: 'ml-auto rounded-full bg-ibf-surface-2 px-2 py-[2px] font-['Bricolage_Grotesque',sans-serif] text-[11px] font-bold text-ibf-muted'
+                labelText: `font-['Bricolage_Grotesque',sans-serif] text-[14px] text-ibf-body group-hover:text-ibf-heading font-medium`,
+                count: `ml-auto rounded-full bg-ibf-surface-2 px-2 py-[2px] font-['Bricolage_Grotesque',sans-serif] text-[11px] font-bold text-ibf-muted`
               }}
             />
           </div>
@@ -199,7 +199,7 @@ export default function DiscoverClient({ studentId }: DiscoverClientProps) {
               classNames={{
                 root: 'w-full',
                 form: 'relative w-full shadow-sm rounded-full transition-shadow hover:shadow-md focus-within:shadow-md',
-                input: 'w-full rounded-full border-2 border-ibf-border bg-ibf-bg py-4 pl-14 pr-5 font-['Bricolage_Grotesque',sans-serif] text-[16px] font-medium text-ibf-heading placeholder-ibf-muted transition-colors focus:border-ibf-secondary focus:outline-none focus:bg-white',
+                input: `w-full rounded-full border-2 border-ibf-border bg-ibf-bg py-4 pl-14 pr-5 font-['Bricolage_Grotesque',sans-serif] text-[16px] font-medium text-ibf-heading placeholder-ibf-muted transition-colors focus:border-ibf-secondary focus:outline-none focus:bg-white`,
                 submit: 'hidden',
                 submitIcon: 'hidden',
                 reset: 'absolute right-5 top-1/2 -translate-y-1/2 text-ibf-muted hover:text-ibf-heading bg-ibf-surface rounded-full p-1',
