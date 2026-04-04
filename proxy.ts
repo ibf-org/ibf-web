@@ -1,5 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
+import type { NextRequest, NextFetchEvent } from 'next/server'
 
 // ─── Route Matchers ─────────────────────────────────────────────────────────
 
@@ -35,7 +36,9 @@ const isProtectedRoute = createRouteMatcher([
   '/api/init-community(.*)',
 ])
 
-export default clerkMiddleware(async (auth, req) => {
+// ─── Clerk handler (returned function) ──────────────────────────────────────
+
+const clerkHandler = clerkMiddleware(async (auth, req) => {
   const pathname = req.nextUrl.pathname
   const { userId, sessionClaims } = await auth()
 
@@ -100,6 +103,15 @@ export default clerkMiddleware(async (auth, req) => {
 
   return NextResponse.next()
 })
+
+// ─── Next.js 16 Proxy convention ────────────────────────────────────────────
+// Next.js 16 renamed middleware.ts → proxy.ts and runs on Node.js by default.
+// Export as named `proxy` function so Vercel deploys it on Node.js runtime
+// (not Edge), which is required for @clerk/nextjs v7's Node.js-only APIs.
+
+export default async function proxy(request: NextRequest, event: NextFetchEvent) {
+  return clerkHandler(request, event)
+}
 
 export const config = {
   matcher: [
