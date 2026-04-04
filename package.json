@@ -64,5 +64,11 @@
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "react-image-gallery": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
